@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD1 - Carto</title>
+</head>
+<body>
+    <h1>Exercice 1</h1>
+
+    <div id="map"></div>
+
+    <h2>Avec getCurrentPosition()</h2>
+    <p id="current">Loading...</p>
+
+    <h2> Avec watchPosition()</h2>
+    <p id="watch">Loading...</p>
+    <script>
+        function formatPosition(position) {
+            const { latitude, longitude, altitude, accuracy, speed } = position.coords;
+            const date = new Date(position.timestamp);
+
+            return `
+                Latitude : ${latitude}<br>
+                Longitude : ${longitude}<br>
+                Altitude : ${altitude !== null ? altitude + ' m' : 'non disponible'}<br>
+                Précision : ${accuracy} m<br>
+                Vitesse : ${speed !== null ? speed + ' m/s' : 'non disponible'}<br>
+                Date : ${date.toLocaleString()}
+            `;
+        }
+
+        navigator.geolocation.getCurrentPosition(position => {
+            document.getElementById('current').innerHTML = formatPosition(position);
+        }, error => {
+            document.getElementById('current').textContent = `Erreur : ${error.message}`;
+        });
+
+        navigator.geolocation.watchPosition(position => {
+            document.getElementById('watch').innerHTML = formatPosition(position);
+        }, error => {
+            document.getElementById('watch').textContent = `Erreur : ${error.message}`;
+        });
+    </script>
+</body>
+</html>
