@@ -21,19 +21,33 @@
             width: 100%;
             height: 100%;
         }
+        #status {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            z-index: 1000;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
+    <div id="status">Recherche de votre position…</div>
     <div id="map"></div>
     <script>
         var map = L.map('map').setView([46.6, 2.2], 5); // vue par défaut France pcq ct relou l'angletterre
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.jpg?api_key=eed6a6b4-d171-43e4-8215-e5f8490b4245', {
+            minZoom: 1,
+            maxZoom: 16,
+            attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>, &copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a>, &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Marqueur sur Nice 
-        L.marker([43.7102, 7.2620]).addTo(map)
-            .bindPopup('Nice');
+        // Marqueur sur Nice plus exactement à mon adresse pcq faut bien s'amuser 
+        L.marker([43.700907, 7.237342]).addTo(map)
+            .bindPopup('150 Boulevard de la Madeleine, Nice');
 
         // Triangle des Bermudes via de coordonnées que j'ai demandé à l'ia
         var bermudes = [
@@ -43,6 +57,23 @@
         ];
         L.polygon(bermudes, { color: 'red' }).addTo(map)
             .bindPopup('Triangle des Bermudes');
+
+        var marseille = [43.296482, 5.369911];
+        var nice = [43.700907, 7.237342]; // chez moi
+
+        var segment = L.polyline([nice, marseille], { color: 'blue' }).addTo(map)
+            .bindPopup('Segment Marseille - Nice');
+            L.marker(marseille).addTo(map)
+            .bindPopup('Marseille');
+
+        // GeoJson des régions françaises via un fichier hébergé sur GitHub
+        fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions.geojson')
+            .then(res => res.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    style: { color: 'green', weight: 1, fillOpacity: 0.05 }
+                }).addTo(map);
+            });
 
         var status = document.getElementById('status');
 
@@ -54,12 +85,21 @@
                     var latitude = position.coords.latitude;
                     var longitude = position.coords.longitude;
                     map.setView([latitude, longitude], 15);
+                    var distanceKm = (map.distance(marseille, [latitude, longitude]) / 1000).toFixed(1);
+                    console.log(`Distance à Marseille : ${distanceKm} km`);
                     L.marker([latitude, longitude]).addTo(map)
-                        .bindPopup('Vous êtes ici !')
+                        .bindPopup(`Vous êtes ici !<br>Distance à Marseille : ${distanceKm} km`)
                         .openPopup();
 
-                    status.textContent = 'Position trouvée !';
-                    setTimeout(() => status.remove(), 2000);
+                    status.textContent = `Distance à Marseille : ${distanceKm} km`;
+                    var circle = L.circle([latitude, longitude], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: position.coords.accuracy
+                    }).addTo(map);
+                    console.log(`Latitude: ${latitude}, Longitude: ${longitude}, Accuracy: ${position.coords.accuracy} meters`);
+
                 },
                 error => {status.textContent = "Une erreur est survenue.";}
             );
