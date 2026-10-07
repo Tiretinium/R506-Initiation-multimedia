@@ -66,6 +66,30 @@
             L.marker(marseille).addTo(map)
             .bindPopup('Marseille');
 
+        // Itinéraire routier réel Marseille -> Nice via OSRM
+        // (les coordonnées OSRM/Mapbox sont en lon,lat, à l'inverse de nos tableaux [lat, lon])
+        fetch(`https://router.project-osrm.org/route/v1/driving/${marseille[1]},${marseille[0]};${nice[1]},${nice[0]}?overview=full&geometries=geojson`)
+            .then(res => res.json())
+            .then(data => {
+                var route = data.routes[0];
+                var distanceKm = (route.distance / 1000).toFixed(1);
+                var dureeMin = Math.round(route.duration / 60);
+                L.geoJSON(route.geometry, { style: { color: 'orange', weight: 4 } }).addTo(map)
+                    .bindPopup(`Itinéraire OSRM : ${distanceKm} km, ${dureeMin} min`);
+            });
+
+        // Même itinéraire, mais calculé avec un autre outil : Mapbox Directions API
+        var mapboxToken = 'pk.eyJ1IjoiY3YwNiIsImEiOiJjajg2MmpzYjcwbWdnMzNsc2NzM2l4eW0yIn0.TfDJipR5II7orUZaC848YA';
+        fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${marseille[1]},${marseille[0]};${nice[1]},${nice[0]}?geometries=geojson&access_token=${mapboxToken}`)
+            .then(res => res.json())
+            .then(data => {
+                var route = data.routes[0];
+                var distanceKm = (route.distance / 1000).toFixed(1);
+                var dureeMin = Math.round(route.duration / 60);
+                L.geoJSON(route.geometry, { style: { color: 'purple', weight: 4, dashArray: '6' } }).addTo(map)
+                    .bindPopup(`Itinéraire Mapbox : ${distanceKm} km, ${dureeMin} min`);
+            });
+
         // GeoJson des régions françaises via un fichier hébergé sur GitHub
         fetch('https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/regions.geojson')
             .then(res => res.json())
