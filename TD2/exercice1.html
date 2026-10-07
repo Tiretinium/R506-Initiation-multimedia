@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD2 - Three.js</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #capteurs { position: absolute; top: 10px; left: 10px; padding: 10px; display: none; }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <button id="capteurs">Activer les capteurs</button>
+    <script type="module">
+        // Import de Three.js
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color("grey");
+        scene.fog = new THREE.Fog("grey", 2, 12);
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 4;
+        const light = new THREE.AmbientLight("white", 1);
+        scene.add(light);
+        const soleil = new THREE.DirectionalLight("white", 3);
+        soleil.position.set(2, 4, 3);
+        scene.add(soleil);
+
+        //Partie avec le cube texturé
+        const texture = new THREE.TextureLoader().load("textures/crate.gif");
+        texture.colorSpace = THREE.SRGBColorSpace;
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshStandardMaterial({ map: texture });
+        const cube = new THREE.Mesh(geometry, material);
+        cube.rotation.set(0.5, 0.7, 0);
+        cube.position.x = -1.5;
+        scene.add(cube);
+
+        //Partie avec le modèle 3D (voiture)
+        
+        const voiture = new THREE.Group();
+        voiture.position.x = 1.2;
+        scene.add(voiture);
+        new GLTFLoader().load("Model/CAR Model by Ignition Labs - 5zUWP5UsLg-.glb", (gltf) => {
+            const modele = gltf.scene;
+            const boite = new THREE.Box3().setFromObject(modele);
+            const taille = boite.getSize(new THREE.Vector3());
+            const centre = boite.getCenter(new THREE.Vector3());
+            const echelle = 2.5 / Math.max(taille.x, taille.y, taille.z);
+            modele.scale.setScalar(echelle);
+            modele.position.copy(centre).multiplyScalar(-echelle);
+            voiture.add(modele);
+        }, undefined, (erreur) => console.error("Modèle non chargé :", erreur));
+
+        
+        const nbGouttes = 1500;
+        const positions = new Float32Array(nbGouttes * 3);
+        for (let i = 0; i < nbGouttes; i++) {
+            positions[i * 3] = (Math.random() - 0.5) * 12;
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10 - 1;
+        }
+        const pluieGeometry = new THREE.BufferGeometry();
+        pluieGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        const pluie = new THREE.Points(pluieGeometry, new THREE.PointsMaterial({ color: "lightblue", size: 0.04 }));
+        scene.add(pluie);
+
+        //Partie tel
+        //DeviceOrientation : l'inclinaison du téléphone oriente la voiture
+        let orientation = null;
+        function surOrientation(event) {
+            if (event.beta === null) return;
+            orientation = {
+                x: THREE.MathUtils.degToRad(event.beta),
+                y: THREE.MathUtils.degToRad(event.gamma)
+            };
+        }
+        //DeviceMotion : secouer le téléphone accélère la rotation du cube
+        let vitesseCube = 0.01;
+        function surMouvement(event) {
+            const a = event.acceleration;
+            if (!a || a.x === null) return;
+            const force = Math.sqrt(a.x * a.x + a.y * a.y + a.z * a.z);
+            vitesseCube = Math.min(0.3, Math.max(vitesseCube, force * 0.02));
+        }
+        function activerCapteurs() {
+            window.addEventListener("deviceorientation", surOrientation);
+            window.addEventListener("devicemotion", surMouvement);
+        }
+        //sur iOS il faut demander la permission après un clic
+        const bouton = document.getElementById("capteurs");
+        if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission === "function") {
+            bouton.style.display = "block";
+            bouton.addEventListener("click", async () => {
+                const reponseOrientation = await DeviceOrientationEvent.requestPermission();
+                const reponseMouvement = await DeviceMotionEvent.requestPermission();
+                if (reponseOrientation === "granted" && reponseMouvement === "granted") {
+                    activerCapteurs();
+                    bouton.style.display = "none";
+                }
+            });
+        } else {
+            activerCapteurs();
+        }
+
+        //rendu
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+
+        window.addEventListener("resize", () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        //animation
+        function animate() { 
+            cube.rotation.x += vitesseCube;
+            cube.rotation.y += vitesseCube;
+            vitesseCube = Math.max(0.01, vitesseCube * 0.97);
+
+            //la voiture suit le téléphone, sinon elle tourne toute seule
+            if (orientation) {
+                voiture.rotation.x = orientation.x;
+                voiture.rotation.y = orientation.y;
+            } else {
+                voiture.rotation.y += 0.005;
+            }
+
+
+            for (let i = 0; i < nbGouttes; i++) {
+                positions[i * 3 + 1] -= 0.08;
+                if (positions[i * 3 + 1] < -4) positions[i * 3 + 1] = 4;
+            }
+            pluieGeometry.attributes.position.needsUpdate = true;
+
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        renderer.setAnimationLoop(animate);
+    </script>
+</body>
+</html>
