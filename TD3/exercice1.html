@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD3 - Géolocalisation et 3D</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; display: flex; height: 100vh; overflow: hidden; }
+        #globe, #map { flex: 1; min-width: 0; min-height: 0; }
+        #globe { background: black; position: relative; }
+        #commandes { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; align-items: center; color: white; font-family: sans-serif; }
+        #commandes button { padding: 6px 10px; cursor: pointer; }
+        @media (max-width: 700px) {
+            body { flex-direction: column; }
+        }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="globe">
+        <div id="commandes">
+            <button id="btnRotation">⏸ Pause</button>
+            <label for="curseurVitesse">Vitesse</label>
+            <input type="range" id="curseurVitesse" min="0" max="150" step="1" value="10">
+            <span id="vitesse"></span>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        const conteneur = document.getElementById("globe");
+        const rayon = 1;
+
+        //PART 1 : scène + caméra + light + renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(50, conteneur.clientWidth / conteneur.clientHeight, 0.1, 100);
+        camera.position.set(0, 0, 3);
+        scene.add(camera);
+
+        scene.add(new THREE.AmbientLight("white", 2));
+        const soleil = new THREE.DirectionalLight("white", 1.5);
+        soleil.position.set(1, 1, 1);
+        camera.add(soleil);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(conteneur.clientWidth, conteneur.clientHeight);
+        conteneur.appendChild(renderer.domElement);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.enablePan = false;
+        controls.minDistance = 1.3;
+        controls.maxDistance = 6;
+        controls.autoRotate = true;
+
+        const btnRotation = document.getElementById("btnRotation");
+        const curseurVitesse = document.getElementById("curseurVitesse");
+        const affichageVitesse = document.getElementById("vitesse");
+        const vitesseMax = 20;
+        function appliquerVitesse() {
+            const valeur = Number(curseurVitesse.value);
+            controls.autoRotateSpeed = (valeur / 100) * vitesseMax;
+            affichageVitesse.textContent = valeur;
+        }
+        appliquerVitesse();
+
+        btnRotation.addEventListener("click", () => {
+            controls.autoRotate = !controls.autoRotate;
+            btnRotation.textContent = controls.autoRotate ? "⏸ Pause" : "▶ Tourner";
+        });
+        //le curseur modifie la vitesse en direct pendant qu'on le fait glisser
+        curseurVitesse.addEventListener("input", appliquerVitesse);
+
+        //sphère de rayon 1 texturée avec la Terre
+        const textureTerre = new THREE.TextureLoader().load("textures/earth.jpg");
+        textureTerre.colorSpace = THREE.SRGBColorSpace;
+        const terre = new THREE.Mesh(
+            new THREE.SphereGeometry(rayon, 64, 64),
+            new THREE.MeshStandardMaterial({ map: textureTerre })
+        );
+        scene.add(terre);
+
+        //fond étoilé : des points blancs placés au hasard sur une grande sphère autour de la scène
+        const nbEtoiles = 3000;
+        const positionsEtoiles = new Float32Array(nbEtoiles * 3);
+        for (let i = 0; i < nbEtoiles; i++) {
+            //direction au hasard, distance entre 30 et 60 (au-delà de maxDistance, en deçà du far de la caméra)
+            const p = new THREE.Vector3().randomDirection().multiplyScalar(30 + Math.random() * 30);
+            positionsEtoiles.set([p.x, p.y, p.z], i * 3);
+        }
+        const geometrieEtoiles = new THREE.BufferGeometry();
+        geometrieEtoiles.setAttribute("position", new THREE.BufferAttribute(positionsEtoiles, 3));
+        scene.add(new THREE.Points(geometrieEtoiles, new THREE.PointsMaterial({ color: "white", size: 0.15 })));
+
+        //atmosphère : sphère un peu plus grande vue de l'intérieur (BackSide),
+        //plus lumineuse près du bord de la Terre et qui s'estompe vers l'extérieur
+        const atmosphere = new THREE.Mesh(
+            new THREE.SphereGeometry(rayon * 1.1, 64, 64),
+            new THREE.ShaderMaterial({
+                vertexShader: `
+                    varying vec3 vNormale;
+                    varying vec3 vVersCamera;
+                    void main() {
+                        vec4 positionVue = modelViewMatrix * vec4(position, 1.0);
+                        vNormale = normalize(normalMatrix * normal);
+                        vVersCamera = normalize(-positionVue.xyz);
+                        gl_Position = projectionMatrix * positionVue;
+                    }`,
+                fragmentShader: `
+                    varying vec3 vNormale;
+                    varying vec3 vVersCamera;
+                    void main() {
+                        float intensite = pow(max(-dot(vNormale, vVersCamera), 0.0), 2.0) * 4.0;
+                        gl_FragColor = vec4(0.3, 0.6, 1.0, 1.0) * intensite;
+                    }`,
+                side: THREE.BackSide,
+                blending: THREE.AdditiveBlending,
+                transparent: true,
+                depthWrite: false
+            })
+        );
+        scene.add(atmosphere);
+
+        function latLonVersXYZ(lat, lon, r) {
+            const phi = THREE.MathUtils.degToRad(90 - lat);     //angle depuis le pôle nord
+            const theta = THREE.MathUtils.degToRad(lon + 180);  //angle autour de l'axe Y
+            return new THREE.Vector3(
+                -r * Math.sin(phi) * Math.cos(theta),
+                r * Math.cos(phi),
+                r * Math.sin(phi) * Math.sin(theta)
+            );
+        }
+        function xyzVersLatLon(point) {
+            const p = point.clone().normalize();
+            const lat = 90 - THREE.MathUtils.radToDeg(Math.acos(p.y));
+            let lon = THREE.MathUtils.radToDeg(Math.atan2(p.z, -p.x)) - 180;
+            if (lon < -180) lon += 360;
+            return { lat, lon };
+        }
+
+        //carte Leaflet
+        const map = L.map("map").setView([20, 0], 2);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; OpenStreetMap"
+        }).addTo(map);
+        navigator.geolocation.getCurrentPosition((position) => {
+            const { latitude, longitude } = position.coords;
+            const moi = new THREE.Mesh(
+                new THREE.SphereGeometry(0.02, 16, 16),
+                new THREE.MeshBasicMaterial({ color: "red" })
+            );
+            moi.position.copy(latLonVersXYZ(latitude, longitude, rayon + 0.01));
+            terre.add(moi);
+
+            L.circleMarker([latitude, longitude], { color: "red", fillOpacity: 0.8 })
+                .addTo(map)
+                .bindPopup("Vous êtes ici")
+                .on("click", () => viser(latitude, longitude));
+            viser(latitude, longitude);
+        }, (erreur) => console.warn("Position non disponible :", erreur.message));
+        const drapeaux = [];
+        const geometrieDrapeau = new THREE.PlaneGeometry(0.06, 0.04);
+        const chargeur = new THREE.TextureLoader();
+
+        fetch("https://cdn.jsdelivr.net/gh/mledoze/countries@master/dist/countries.json")
+            .then((reponse) => reponse.json())
+            .then((pays) => {
+                pays.filter((p) => p.independent).forEach((p) => {
+                    const [lat, lon] = p.latlng;
+                    const code = p.cca2.toLowerCase();
+                    const nom = p.translations.fra.common;
+
+                    const texture = chargeur.load(`https://flagcdn.com/w80/${code}.png`);
+                    texture.colorSpace = THREE.SRGBColorSpace;
+                    const drapeau = new THREE.Mesh(
+                        geometrieDrapeau,
+                        new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide })
+                    );
+                    const position = latLonVersXYZ(lat, lon, rayon + 0.02);
+                    drapeau.position.copy(position);
+                    //le drapeau est posé à plat, face vers l'extérieur
+                    drapeau.lookAt(position.clone().multiplyScalar(2));
+                    terre.add(drapeau);
+
+                    const marqueur = L.marker([lat, lon])
+                        .addTo(map)
+                        .bindPopup(`<img src="https://flagcdn.com/w40/${code}.png" alt=""> <b>${nom}</b><br>Capitale : ${p.capital[0] ?? "-"}`)
+                        .on("click", () => viser(lat, lon));
+
+                    drapeau.userData = { lat, lon, marqueur };
+                    drapeaux.push(drapeau);
+                });
+            })
+            .catch((erreur) => console.error("Pays non chargés :", erreur));
+
+        //PART 2 : Leaflet -> 3D
+        let cible = null;
+        function viser(lat, lon) {
+            cible = latLonVersXYZ(lat, lon, camera.position.length());
+        }
+        map.on("click", (event) => viser(event.latlng.lat, event.latlng.lng));
+        controls.addEventListener("start", () => cible = null);
+
+        //PART 2 : 3D -> Leaflet
+        const raycaster = new THREE.Raycaster();
+        const souris = new THREE.Vector2();
+        let departClic = null;
+
+        renderer.domElement.addEventListener("pointerdown", (event) => {
+            departClic = { x: event.clientX, y: event.clientY };
+        });
+        renderer.domElement.addEventListener("pointerup", (event) => {
+            if (!departClic || Math.hypot(event.clientX - departClic.x, event.clientY - departClic.y) > 5) return;
+            const zone = renderer.domElement.getBoundingClientRect();
+            souris.x = ((event.clientX - zone.left) / zone.width) * 2 - 1;
+            souris.y = -((event.clientY - zone.top) / zone.height) * 2 + 1;
+            raycaster.setFromCamera(souris, camera);
+            const touches = raycaster.intersectObjects([terre, ...drapeaux], false);
+            if (touches.length === 0) return;
+            const objet = touches[0].object;
+            if (objet === terre) {
+                const { lat, lon } = xyzVersLatLon(touches[0].point);
+                map.setView([lat, lon], Math.max(map.getZoom(), 4));
+            } else {
+                map.setView([objet.userData.lat, objet.userData.lon], 5);
+                objet.userData.marqueur.openPopup();
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            camera.aspect = conteneur.clientWidth / conteneur.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(conteneur.clientWidth, conteneur.clientHeight);
+        });
+
+        function animate() {
+            if (cible) {
+                const distance = camera.position.length();
+                camera.position.lerp(cible, 0.08).setLength(distance);
+                if (camera.position.distanceTo(cible) < 0.001) cible = null;
+            }
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        renderer.setAnimationLoop(animate);
+    </script>
+</body>
+</html>
