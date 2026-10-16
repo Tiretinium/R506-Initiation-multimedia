@@ -12,6 +12,8 @@
         #globe { background: black; position: relative; }
         #commandes { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; align-items: center; color: white; font-family: sans-serif; }
         #commandes button { padding: 6px 10px; cursor: pointer; }
+        #nomPays { position: absolute; display: none; pointer-events: none; padding: 4px 8px; border-radius: 4px;
+                   background: rgba(0, 0, 0, 0.7); color: white; font-family: sans-serif; font-size: 14px; }
         @media (max-width: 700px) {
             body { flex-direction: column; }
         }
@@ -33,6 +35,7 @@
             <input type="range" id="curseurVitesse" min="0" max="150" step="1" value="10">
             <span id="vitesse"></span>
         </div>
+        <div id="nomPays"></div>
     </div>
     <div id="map"></div>
 
@@ -80,10 +83,7 @@
             controls.autoRotate = !controls.autoRotate;
             btnRotation.textContent = controls.autoRotate ? "⏸ Pause" : "▶ Tourner";
         });
-        //le curseur modifie la vitesse en direct pendant qu'on le fait glisser
         curseurVitesse.addEventListener("input", appliquerVitesse);
-
-        //sphère de rayon 1 texturée avec la Terre
         const textureTerre = new THREE.TextureLoader().load("textures/earth.jpg");
         textureTerre.colorSpace = THREE.SRGBColorSpace;
         const terre = new THREE.Mesh(
@@ -91,8 +91,6 @@
             new THREE.MeshStandardMaterial({ map: textureTerre })
         );
         scene.add(terre);
-
-        //fond étoilé : des points blancs placés au hasard sur une grande sphère autour de la scène
         const nbEtoiles = 3000;
         const positionsEtoiles = new Float32Array(nbEtoiles * 3);
         for (let i = 0; i < nbEtoiles; i++) {
@@ -199,7 +197,7 @@
                         .bindPopup(`<img src="https://flagcdn.com/w40/${code}.png" alt=""> <b>${nom}</b><br>Capitale : ${p.capital[0] ?? "-"}`)
                         .on("click", () => viser(lat, lon));
 
-                    drapeau.userData = { lat, lon, marqueur };
+                    drapeau.userData = { lat, lon, marqueur, nom };
                     drapeaux.push(drapeau);
                 });
             })
@@ -238,6 +236,29 @@
                 objet.userData.marqueur.openPopup();
             }
         });
+        const nomPays = document.getElementById("nomPays");
+        renderer.domElement.addEventListener("pointermove", (event) => {
+            const zone = renderer.domElement.getBoundingClientRect();
+            souris.x = ((event.clientX - zone.left) / zone.width) * 2 - 1;
+            souris.y = -((event.clientY - zone.top) / zone.height) * 2 + 1;
+            raycaster.setFromCamera(souris, camera);
+
+            //on teste aussi la Terre pour ne pas détecter les drapeaux cachés derrière
+            const touches = raycaster.intersectObjects([terre, ...drapeaux], false);
+            const objet = touches.length > 0 ? touches[0].object : null;
+
+            if (objet && objet !== terre) {
+                nomPays.textContent = objet.userData.nom;
+                nomPays.style.left = (event.clientX - zone.left + 12) + "px";
+                nomPays.style.top = (event.clientY - zone.top + 12) + "px";
+                nomPays.style.display = "block";
+                renderer.domElement.style.cursor = "pointer";
+            } else {
+                nomPays.style.display = "none";
+                renderer.domElement.style.cursor = "";
+            }
+        });
+        renderer.domElement.addEventListener("pointerleave", () => nomPays.style.display = "none");
 
         window.addEventListener("resize", () => {
             camera.aspect = conteneur.clientWidth / conteneur.clientHeight;

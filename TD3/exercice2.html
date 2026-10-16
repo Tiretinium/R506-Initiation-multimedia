@@ -1,11 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>TD3 - Objets géolocalisés dans la caméra</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        body { margin: 0; height: 100vh; overflow: hidden; background: black; font-family: sans-serif; }
+        /* la vidéo est en fond, la scène 3D est posée par-dessus */
+        #video, #scene3d { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        #video { object-fit: cover; }
+        #infos { position: absolute; top: 10px; left: 10px; right: 10px; color: white; background: rgba(0, 0, 0, 0.5); padding: 8px; }
+        #demarrer { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 16px 24px; font-size: 18px; }
+        /* mini-carte ronde en bas à droite = boussole 2D */
+        #carte { position: absolute; right: 10px; bottom: 10px; width: 40vmin; height: 40vmin;
+                 border-radius: 50%; border: 3px solid white; }
+        #fleche { color: red; font-size: 24px; line-height: 24px; text-align: center; }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"
+            }
+        }
+    </script>
 </head>
 <body>
-    
+    <video id="video" autoplay muted playsinline></video>
+    <div id="infos">Appuyez sur Démarrer</div>
+    <div id="carte"></div>
+    <button id="demarrer">Démarrer</button>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        const video = document.getElementById("video");
+        const infos = document.getElementById("infos");
+        const boutonDemarrer = document.getElementById("demarrer");
+
+        //les villes à afficher dans la caméra (les pays proches sont ajoutés ensuite, voir partie 6)
+        const villes = [
+            { nom: "Nice", lat: 43.7102, lon: 7.2620, couleur: "orange" },
+            { nom: "Antibes", lat: 43.5808, lon: 7.1251, couleur: "yellow" },
+            { nom: "Cannes", lat: 43.5528, lon: 7.0174, couleur: "deeppink" },
+            { nom: "Monaco", lat: 43.7384, lon: 7.4246, couleur: "red" },
+            { nom: "Paris", lat: 48.8566, lon: 2.3522, couleur: "cyan" }
+        ];
+        const lieux = [];        //tous les lieux affichés (villes + pays)
+        let lieuChoisi = null;   //le lieu vers lequel pointe la flèche 3D
+        let maPosition = null;
+        let orientation = null;
+
+
+        // ===== 1. SCÈNE 3D =====
+        //repère utilisé : x = est, y = haut, -z = nord
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        //alpha: true -> fond transparent, on voit la vidéo derrière
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.id = "scene3d";
+        document.body.insertBefore(renderer.domElement, infos);
+
+        scene.add(new THREE.AmbientLight("white", 3));
+
+
+        // ===== 2. ÉTIQUETTES TEXTE =====
+        //un Sprite est toujours tourné vers la caméra ; son image est un texte dessiné dans un canvas
+        function creerEtiquette(texte) {
+            const canvas = document.createElement("canvas");
+            canvas.width = 512;
+            canvas.height = 128;
+            const etiquette = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas) }));
+            etiquette.scale.set(4, 1, 1);
+            ecrire(etiquette, texte);
+            return etiquette;
+        }
+
+        function ecrire(etiquette, texte) {
+            const texture = etiquette.material.map;
+            const canvas = texture.image;
+            const ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "rgba(0, 0, 0, 0.6)";   //fond noir transparent
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "white";                //texte blanc centré
+            ctx.font = "bold 56px sans-serif";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillText(texte, canvas.width / 2, canvas.height / 2);
+
+            texture.needsUpdate = true;             //on prévient three.js que l'image a changé
+        }
+
+
+        // ===== 3. POINTS CARDINAUX (pour vérifier l'orientation) =====
+        const nord = creerEtiquette("N");  nord.position.set(0, -2, -10);  scene.add(nord);
+        const sud = creerEtiquette("S");   sud.position.set(0, -2, 10);    scene.add(sud);
+        const est = creerEtiquette("E");   est.position.set(10, -2, 0);    scene.add(est);
+        const ouest = creerEtiquette("O"); ouest.position.set(-10, -2, 0); scene.add(ouest);
+
+
+        // ===== 4. CARTE 2D (BOUSSOLE) =====
+        const carte = L.map("carte", { zoomControl: false, attributionControl: false }).setView([43.6, 7.1], 8);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(carte);
+
+        //moi = une flèche rouge qui tourne selon le cap du téléphone
+        const marqueurMoi = L.marker([0, 0], {
+            icon: L.divIcon({ className: "", html: '<div id="fleche">▲</div>', iconSize: [24, 24] })
+        });
+
+
+        // ===== 5. AJOUTER / PLACER UN LIEU =====
+        //écart en km vers le nord et vers l'est entre moi et un point (1° de latitude = 111 km)
+        function ecart(lat, lon) {
+            const versLeNord = (lat - maPosition.latitude) * 111;
+            const versLEst = (lon - maPosition.longitude) * 111 * Math.cos(THREE.MathUtils.degToRad(maPosition.latitude));
+            return { versLeNord, versLEst, distanceKm: Math.hypot(versLeNord, versLEst) };
+        }
+
+        //objet = l'objet 3D (cube, drapeau...), hauteur = à quelle hauteur on l'affiche
+        function ajouterLieu(nom, lat, lon, objet, hauteur, couleur) {
+            const lieu = { nom, lat, lon, objet, hauteur };
+
+            //en 3D : l'objet + son étiquette
+            lieu.etiquette = creerEtiquette(nom);
+            scene.add(objet);
+            scene.add(lieu.etiquette);
+
+            //sur la carte : un point (cliquable pour choisir la cible) + une ligne depuis moi
+            lieu.ligne = L.polyline([], { color: couleur, weight: 2 }).addTo(carte);
+            L.circleMarker([lat, lon], { radius: 6, color: couleur, fillOpacity: 1 })
+                .addTo(carte)
+                .bindTooltip(nom)
+                .on("click", () => lieuChoisi = lieu);
+
+            lieux.push(lieu);
+            placerLieu(lieu);
+        }
+
+        //les lieux sont à plusieurs km : on les affiche tous à 30 m, mais dans la bonne direction
+        const distanceAffichage = 30;
+
+        function placerLieu(lieu) {
+            const { versLeNord, versLEst, distanceKm } = ecart(lieu.lat, lieu.lon);
+            lieu.distanceKm = distanceKm;
+
+            //direction du lieu dans le repère three.js (est = +x, nord = -z), de longueur 30
+            const direction = new THREE.Vector3(versLEst, 0, -versLeNord).normalize();
+            lieu.objet.position.copy(direction.multiplyScalar(distanceAffichage));
+            lieu.objet.position.y = lieu.hauteur;
+            lieu.etiquette.position.copy(lieu.objet.position).add(new THREE.Vector3(0, 2, 0));
+            ecrire(lieu.etiquette, `${lieu.nom} ${distanceKm.toFixed(1)} km`);
+
+            lieu.ligne.setLatLngs([[maPosition.latitude, maPosition.longitude], [lieu.lat, lieu.lon]]);
+        }
+
+
+        // ===== 6. CRÉATION DES LIEUX (quand on connaît notre position) =====
+        function creerLieux() {
+            //les villes : un cube de couleur
+            villes.forEach((ville) => {
+                const cube = new THREE.Mesh(
+                    new THREE.BoxGeometry(2, 2, 2),
+                    new THREE.MeshStandardMaterial({ color: ville.couleur })
+                );
+                ajouterLieu(ville.nom, ville.lat, ville.lon, cube, 0, ville.couleur);
+            });
+
+            //autres données : les 10 pays les plus proches, avec leur drapeau (même source que l'exercice 1)
+            fetch("https://cdn.jsdelivr.net/gh/mledoze/countries@master/dist/countries.json")
+                .then((reponse) => reponse.json())
+                .then((pays) => {
+                    const plusProches = pays
+                        .filter((p) => p.independent)
+                        .sort((a, b) => ecart(a.latlng[0], a.latlng[1]).distanceKm - ecart(b.latlng[0], b.latlng[1]).distanceKm)
+                        .slice(0, 10);
+
+                    plusProches.forEach((p) => {
+                        const texture = new THREE.TextureLoader().load(`https://flagcdn.com/w160/${p.cca2.toLowerCase()}.png`);
+                        texture.colorSpace = THREE.SRGBColorSpace;
+                        const drapeau = new THREE.Sprite(new THREE.SpriteMaterial({ map: texture }));
+                        drapeau.scale.set(3, 2, 1);
+                        //les drapeaux sont affichés plus haut que les villes pour ne pas se cacher
+                        ajouterLieu(p.translations.fra.common, p.latlng[0], p.latlng[1], drapeau, 6, "deepskyblue");
+                    });
+                });
+        }
+
+
+        // ===== 7. FLÈCHE 3D VERS LE LIEU CHOISI =====
+        //(on choisit le lieu en touchant son point sur la mini-carte)
+        const fleche3D = new THREE.ArrowHelper(new THREE.Vector3(0, 0, -1), new THREE.Vector3(), 1.5, 0xff0000, 0.6, 0.4);
+        fleche3D.visible = false;
+        scene.add(fleche3D);
+
+        function orienterFleche3D() {
+            if (lieuChoisi === null) return;
+            //la flèche flotte 4 m devant la caméra, un peu en bas de l'écran
+            const devantMoi = camera.localToWorld(new THREE.Vector3(0, -1, -4));
+            fleche3D.position.copy(devantMoi);
+            //elle pointe vers le lieu, à l'horizontale
+            const direction = lieuChoisi.objet.position.clone().sub(devantMoi);
+            direction.y = 0;
+            fleche3D.setDirection(direction.normalize());
+            fleche3D.visible = true;
+        }
+
+
+        // ===== 8. ORIENTATION DU TÉLÉPHONE -> ORIENTATION DE LA CAMÉRA =====
+        //alpha = boussole, beta = inclinaison avant/arrière, gamma = inclinaison gauche/droite (en degrés)
+        //téléphone tenu en portrait
+        function orienterCamera() {
+            if (orientation === null) return;
+            const alpha = THREE.MathUtils.degToRad(orientation.alpha);
+            const beta = THREE.MathUtils.degToRad(orientation.beta);
+            const gamma = THREE.MathUtils.degToRad(orientation.gamma);
+
+            //on applique les 3 angles du téléphone...
+            camera.quaternion.setFromEuler(new THREE.Euler(beta, alpha, -gamma, "YXZ"));
+            //...puis on tourne de -90° : la caméra regarde par le dos du téléphone, pas vers le ciel
+            camera.rotateX(-Math.PI / 2);
+            camera.updateMatrixWorld();
+        }
+
+        //cap en degrés : 0 = nord, 90 = est
+        function cap() {
+            return Math.round(360 - orientation.alpha) % 360;
+        }
+
+
+        // ===== 9. AFFICHAGE DES INFOS (bandeau + flèche de la carte) =====
+        function afficherInfos() {
+            let texte = "Position : en attente… ";
+            if (maPosition) texte = `Position : ${maPosition.latitude.toFixed(5)}, ${maPosition.longitude.toFixed(5)} `;
+            if (orientation) texte += `| Cap : ${cap()}° `;
+            if (lieuChoisi) texte += `| Cible : ${lieuChoisi.nom} (${lieuChoisi.distanceKm.toFixed(1)} km)`;
+            else if (maPosition) texte += "| Touchez un point de la carte pour choisir une cible";
+            infos.textContent = texte;
+
+            //la flèche rouge de la carte tourne avec le téléphone
+            const fleche = document.getElementById("fleche");
+            if (fleche && orientation) fleche.style.transform = `rotate(${cap()}deg)`;
+        }
+
+
+        // ===== 10. DÉMARRAGE (sur un clic, obligatoire pour l'iPhone) =====
+        boutonDemarrer.addEventListener("click", async () => {
+            boutonDemarrer.remove();
+
+            //a) orientation (en premier : l'iPhone veut la demande juste après le clic)
+            if (DeviceOrientationEvent.requestPermission) {
+                //iPhone : il faut demander la permission, et le nord est donné par webkitCompassHeading
+                await DeviceOrientationEvent.requestPermission();
+                window.addEventListener("deviceorientation", (event) => {
+                    orientation = { alpha: 360 - event.webkitCompassHeading, beta: event.beta, gamma: event.gamma };
+                });
+            } else {
+                //Android : "absolute" = alpha mesuré par rapport au nord
+                window.addEventListener("deviceorientationabsolute", (event) => {
+                    orientation = { alpha: event.alpha, beta: event.beta, gamma: event.gamma };
+                });
+            }
+
+            //b) position GPS, mise à jour quand on bouge
+            navigator.geolocation.watchPosition((position) => {
+                const premiereFois = (maPosition === null);
+                maPosition = position.coords;
+                const ici = [maPosition.latitude, maPosition.longitude];
+
+                if (premiereFois) {
+                    marqueurMoi.setLatLng(ici).addTo(carte);
+                    creerLieux();
+                } else {
+                    marqueurMoi.setLatLng(ici);
+                    lieux.forEach(placerLieu);
+                }
+                carte.setView(ici);
+            }, (erreur) => console.warn("Position non disponible :", erreur.message), { enableHighAccuracy: true });
+
+            //c) caméra arrière du téléphone
+            video.srcObject = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        });
+
+
+        // ===== 11. BOUCLE D'ANIMATION =====
+        window.addEventListener("resize", () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function animate() {
+            orienterCamera();
+            orienterFleche3D();
+            afficherInfos();
+            lieux.forEach((lieu) => lieu.objet.rotation.y += 0.01); //les cubes tournent sur eux-mêmes
+            renderer.render(scene, camera);
+        }
+        renderer.setAnimationLoop(animate);
+    </script>
 </body>
 </html>
