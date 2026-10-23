@@ -9,7 +9,8 @@
       "lng": 69.18,
       "surCapitale": true,
       "superficie": 652230,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "za",
@@ -19,7 +20,8 @@
       "lng": 28.23,
       "surCapitale": true,
       "superficie": 1221037,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "al",
@@ -29,7 +31,8 @@
       "lng": 19.82,
       "surCapitale": true,
       "superficie": 28748,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "dz",
@@ -39,7 +42,8 @@
       "lng": 3.05,
       "surCapitale": true,
       "superficie": 2381741,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "de",
@@ -49,7 +53,8 @@
       "lng": 13.4,
       "surCapitale": true,
       "superficie": 357114,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "ad",
@@ -59,7 +64,8 @@
       "lng": 1.52,
       "surCapitale": true,
       "superficie": 468,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "ao",
@@ -69,7 +75,8 @@
       "lng": 13.23,
       "surCapitale": true,
       "superficie": 1246700,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "ag",
@@ -79,7 +86,8 @@
       "lng": -61.85,
       "surCapitale": true,
       "superficie": 442,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "sa",
@@ -89,7 +97,8 @@
       "lng": 46.77,
       "surCapitale": true,
       "superficie": 2149690,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ar",
@@ -99,7 +108,8 @@
       "lng": -58.4,
       "surCapitale": true,
       "superficie": 2780400,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "am",
@@ -109,7 +119,8 @@
       "lng": 44.51,
       "surCapitale": true,
       "superficie": 29743,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "au",
@@ -119,7 +130,8 @@
       "lng": 149.13,
       "surCapitale": true,
       "superficie": 7692024,
-      "connu": true
+      "connu": true,
+      "continent": "Océanie"
     },
     {
       "code": "at",
@@ -129,7 +141,8 @@
       "lng": 16.36,
       "surCapitale": true,
       "superficie": 83871,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "az",
@@ -139,7 +152,8 @@
       "lng": 49.86,
       "surCapitale": true,
       "superficie": 86600,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "bs",
@@ -149,7 +163,8 @@
       "lng": -77.35,
       "surCapitale": true,
       "superficie": 13943,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "bh",
@@ -159,7 +174,8 @@
       "lng": 50.58,
       "surCapitale": true,
       "superficie": 765,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "bd",
@@ -169,7 +185,8 @@
       "lng": 90.41,
       "surCapitale": true,
       "superficie": 147570,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "bb",
@@ -179,7 +196,8 @@
       "lng": -59.62,
       "surCapitale": true,
       "superficie": 430,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "be",
@@ -189,7 +207,8 @@
       "lng": 4.33,
       "surCapitale": true,
       "superficie": 30528,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "bz",
@@ -199,7 +218,8 @@
       "lng": -88.77,
       "surCapitale": true,
       "superficie": 22966,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "bj",
@@ -209,7 +229,8 @@
       "lng": 2.62,
       "surCapitale": true,
       "superficie": 112622,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "bt",
@@ -219,7 +240,8 @@
       "lng": 89.64,
       "surCapitale": true,
       "superficie": 38394,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "by",
@@ -229,7 +251,8 @@
       "lng": 27.56,
       "surCapitale": true,
       "superficie": 207600,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mm",
@@ -239,7 +262,8 @@
       "lng": 96.12,
       "surCapitale": true,
       "superficie": 676578,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "bo",
@@ -249,7 +273,8 @@
       "lng": -65.26,
       "surCapitale": true,
       "superficie": 1098581,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "ba",
@@ -259,7 +284,8 @@
       "lng": 18.38,
       "surCapitale": true,
       "superficie": 51209,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "bw",
@@ -269,7 +295,8 @@
       "lng": 25.91,
       "surCapitale": true,
       "superficie": 582000,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "br",
@@ -279,7 +306,8 @@
       "lng": -47.92,
       "surCapitale": true,
       "superficie": 8515767,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "bn",
@@ -289,7 +317,8 @@
       "lng": 114.93,
       "surCapitale": true,
       "superficie": 5765,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "bg",
@@ -299,7 +328,8 @@
       "lng": 23.31,
       "surCapitale": true,
       "superficie": 110879,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "bf",
@@ -309,7 +339,8 @@
       "lng": -1.53,
       "surCapitale": true,
       "superficie": 272967,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "bi",
@@ -319,7 +350,8 @@
       "lng": 29.36,
       "surCapitale": true,
       "superficie": 27834,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "kh",
@@ -329,7 +361,8 @@
       "lng": 104.91,
       "surCapitale": true,
       "superficie": 181035,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "cm",
@@ -339,7 +372,8 @@
       "lng": 11.51,
       "surCapitale": true,
       "superficie": 475442,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "ca",
@@ -349,7 +383,8 @@
       "lng": -75.7,
       "surCapitale": true,
       "superficie": 9984670,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "cv",
@@ -359,7 +394,8 @@
       "lng": -23.52,
       "surCapitale": true,
       "superficie": 4033,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "cl",
@@ -369,7 +405,8 @@
       "lng": -70.67,
       "surCapitale": true,
       "superficie": 756102,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "cn",
@@ -379,7 +416,8 @@
       "lng": 116.39,
       "surCapitale": true,
       "superficie": 9706961,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "cy",
@@ -389,7 +427,8 @@
       "lng": 33.37,
       "surCapitale": true,
       "superficie": 9251,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "co",
@@ -399,7 +438,8 @@
       "lng": -74.09,
       "surCapitale": true,
       "superficie": 1141748,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "km",
@@ -409,7 +449,8 @@
       "lng": 43.24,
       "surCapitale": true,
       "superficie": 1862,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "cg",
@@ -419,7 +460,8 @@
       "lng": 15.28,
       "surCapitale": true,
       "superficie": 342000,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "kp",
@@ -429,7 +471,8 @@
       "lng": 125.75,
       "surCapitale": true,
       "superficie": 120538,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "kr",
@@ -439,7 +482,8 @@
       "lng": 127,
       "surCapitale": true,
       "superficie": 100210,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "cr",
@@ -449,7 +493,8 @@
       "lng": -84.09,
       "surCapitale": true,
       "superficie": 51100,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "ci",
@@ -459,7 +504,8 @@
       "lng": -5.28,
       "surCapitale": true,
       "superficie": 322463,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "hr",
@@ -469,7 +515,8 @@
       "lng": 16,
       "surCapitale": true,
       "superficie": 56594,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "cu",
@@ -479,7 +526,8 @@
       "lng": -82.37,
       "surCapitale": true,
       "superficie": 109884,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "dk",
@@ -489,7 +537,8 @@
       "lng": 12.56,
       "surCapitale": true,
       "superficie": 43094,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "dj",
@@ -499,7 +548,8 @@
       "lng": 43.15,
       "surCapitale": true,
       "superficie": 23200,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "dm",
@@ -509,7 +559,8 @@
       "lng": -61.39,
       "surCapitale": true,
       "superficie": 751,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "eg",
@@ -519,7 +570,8 @@
       "lng": 31.25,
       "surCapitale": true,
       "superficie": 1002450,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "ae",
@@ -529,7 +581,8 @@
       "lng": 54.37,
       "surCapitale": true,
       "superficie": 83600,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "ec",
@@ -539,7 +592,8 @@
       "lng": -78.5,
       "surCapitale": true,
       "superficie": 276841,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "er",
@@ -549,7 +603,8 @@
       "lng": 38.93,
       "surCapitale": true,
       "superficie": 117600,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "es",
@@ -559,7 +614,8 @@
       "lng": -3.69,
       "surCapitale": true,
       "superficie": 505992,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "ee",
@@ -569,7 +625,8 @@
       "lng": 24.73,
       "surCapitale": true,
       "superficie": 45227,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "sz",
@@ -579,7 +636,8 @@
       "lng": 31.2,
       "surCapitale": true,
       "superficie": 17364,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "us",
@@ -589,7 +647,8 @@
       "lng": -77.01,
       "surCapitale": true,
       "superficie": 9372610,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "et",
@@ -599,7 +658,8 @@
       "lng": 38.7,
       "surCapitale": true,
       "superficie": 1104300,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "fj",
@@ -609,7 +669,8 @@
       "lng": 178.44,
       "surCapitale": true,
       "superficie": 18272,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "fi",
@@ -619,7 +680,8 @@
       "lng": 24.93,
       "surCapitale": true,
       "superficie": 338424,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "fr",
@@ -629,7 +691,8 @@
       "lng": 2.33,
       "surCapitale": true,
       "superficie": 551695,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "ga",
@@ -639,7 +702,8 @@
       "lng": 9.46,
       "surCapitale": true,
       "superficie": 267668,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "gm",
@@ -649,7 +713,8 @@
       "lng": -16.59,
       "surCapitale": true,
       "superficie": 10689,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "ge",
@@ -659,7 +724,8 @@
       "lng": 44.79,
       "surCapitale": true,
       "superficie": 69700,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "gh",
@@ -669,7 +735,8 @@
       "lng": -0.22,
       "surCapitale": true,
       "superficie": 238533,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "gr",
@@ -679,7 +746,8 @@
       "lng": 23.73,
       "surCapitale": true,
       "superficie": 131990,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "gd",
@@ -689,7 +757,8 @@
       "lng": -61.74,
       "surCapitale": true,
       "superficie": 344,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "gt",
@@ -699,7 +768,8 @@
       "lng": -90.53,
       "surCapitale": true,
       "superficie": 108889,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "gn",
@@ -709,7 +779,8 @@
       "lng": -13.68,
       "surCapitale": true,
       "superficie": 245857,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "gq",
@@ -719,7 +790,8 @@
       "lng": 8.78,
       "surCapitale": true,
       "superficie": 28051,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "gw",
@@ -729,7 +801,8 @@
       "lng": -15.6,
       "surCapitale": true,
       "superficie": 36125,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "gy",
@@ -739,7 +812,8 @@
       "lng": -58.17,
       "surCapitale": true,
       "superficie": 214969,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "ht",
@@ -749,7 +823,8 @@
       "lng": -72.34,
       "surCapitale": true,
       "superficie": 27750,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "hn",
@@ -759,7 +834,8 @@
       "lng": -87.22,
       "surCapitale": true,
       "superficie": 112492,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "hu",
@@ -769,7 +845,8 @@
       "lng": 19.08,
       "surCapitale": true,
       "superficie": 93028,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "mh",
@@ -779,7 +856,8 @@
       "lng": 171.38,
       "surCapitale": true,
       "superficie": 181,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "sb",
@@ -789,7 +867,8 @@
       "lng": 159.95,
       "surCapitale": true,
       "superficie": 28896,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "in",
@@ -799,7 +878,8 @@
       "lng": 77.2,
       "surCapitale": true,
       "superficie": 3287590,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "id",
@@ -809,7 +889,8 @@
       "lng": 106.83,
       "surCapitale": true,
       "superficie": 1904569,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "iq",
@@ -819,7 +900,8 @@
       "lng": 44.39,
       "surCapitale": true,
       "superficie": 438317,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ir",
@@ -829,7 +911,8 @@
       "lng": 51.42,
       "surCapitale": true,
       "superficie": 1648195,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ie",
@@ -839,7 +922,8 @@
       "lng": -6.25,
       "surCapitale": true,
       "superficie": 70273,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "is",
@@ -849,7 +933,8 @@
       "lng": -21.95,
       "surCapitale": true,
       "superficie": 103000,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "il",
@@ -859,7 +944,8 @@
       "lng": 35.21,
       "surCapitale": true,
       "superficie": 20770,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "it",
@@ -869,7 +955,8 @@
       "lng": 12.48,
       "surCapitale": true,
       "superficie": 301336,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "jm",
@@ -879,7 +966,8 @@
       "lng": -76.77,
       "surCapitale": true,
       "superficie": 10991,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "jp",
@@ -889,7 +977,8 @@
       "lng": 139.75,
       "surCapitale": true,
       "superficie": 377930,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "jo",
@@ -899,7 +988,8 @@
       "lng": 35.93,
       "surCapitale": true,
       "superficie": 89342,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "kz",
@@ -909,7 +999,8 @@
       "lng": 71.43,
       "surCapitale": true,
       "superficie": 2724900,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ke",
@@ -919,7 +1010,8 @@
       "lng": 36.81,
       "surCapitale": true,
       "superficie": 580367,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "kg",
@@ -929,7 +1021,8 @@
       "lng": 74.58,
       "surCapitale": true,
       "superficie": 199951,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "ki",
@@ -939,7 +1032,8 @@
       "lng": 173.02,
       "surCapitale": true,
       "superficie": 811,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "xk",
@@ -949,7 +1043,8 @@
       "lng": 21.17,
       "surCapitale": false,
       "superficie": 10908,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "kw",
@@ -959,7 +1054,8 @@
       "lng": 47.98,
       "surCapitale": true,
       "superficie": 17818,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "la",
@@ -969,7 +1065,8 @@
       "lng": 102.6,
       "surCapitale": true,
       "superficie": 236800,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "ls",
@@ -979,7 +1076,8 @@
       "lng": 27.48,
       "surCapitale": true,
       "superficie": 30355,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "lv",
@@ -989,7 +1087,8 @@
       "lng": 24.1,
       "surCapitale": true,
       "superficie": 64559,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "lb",
@@ -999,7 +1098,8 @@
       "lng": 35.51,
       "surCapitale": true,
       "superficie": 10452,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "lr",
@@ -1009,7 +1109,8 @@
       "lng": -10.8,
       "surCapitale": true,
       "superficie": 111369,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "ly",
@@ -1019,7 +1120,8 @@
       "lng": 13.18,
       "surCapitale": true,
       "superficie": 1759540,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "li",
@@ -1029,7 +1131,8 @@
       "lng": 9.52,
       "surCapitale": true,
       "superficie": 160,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "lt",
@@ -1039,7 +1142,8 @@
       "lng": 25.32,
       "surCapitale": true,
       "superficie": 65300,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "lu",
@@ -1049,7 +1153,8 @@
       "lng": 6.13,
       "surCapitale": true,
       "superficie": 2586,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mk",
@@ -1059,7 +1164,8 @@
       "lng": 21.43,
       "surCapitale": true,
       "superficie": 25713,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mg",
@@ -1069,7 +1175,8 @@
       "lng": 47.51,
       "surCapitale": true,
       "superficie": 587041,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "my",
@@ -1079,7 +1186,8 @@
       "lng": 101.7,
       "surCapitale": true,
       "superficie": 330803,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "mw",
@@ -1089,7 +1197,8 @@
       "lng": 33.78,
       "surCapitale": true,
       "superficie": 118484,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "mv",
@@ -1099,7 +1208,8 @@
       "lng": 73.5,
       "surCapitale": true,
       "superficie": 300,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "ml",
@@ -1109,7 +1219,8 @@
       "lng": -8,
       "surCapitale": true,
       "superficie": 1240192,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "mt",
@@ -1119,7 +1230,8 @@
       "lng": 14.51,
       "surCapitale": true,
       "superficie": 316,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "ma",
@@ -1129,7 +1241,8 @@
       "lng": -6.84,
       "surCapitale": true,
       "superficie": 446550,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "mu",
@@ -1139,7 +1252,8 @@
       "lng": 57.5,
       "surCapitale": true,
       "superficie": 2040,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "mr",
@@ -1149,7 +1263,8 @@
       "lng": -15.98,
       "surCapitale": true,
       "superficie": 1030700,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "mx",
@@ -1159,7 +1274,8 @@
       "lng": -99.13,
       "surCapitale": true,
       "superficie": 1964375,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "fm",
@@ -1169,7 +1285,8 @@
       "lng": 158.15,
       "surCapitale": true,
       "superficie": 702,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "md",
@@ -1179,7 +1296,8 @@
       "lng": 28.86,
       "surCapitale": true,
       "superficie": 33846,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mc",
@@ -1189,7 +1307,8 @@
       "lng": 7.41,
       "surCapitale": true,
       "superficie": 2,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mn",
@@ -1199,7 +1318,8 @@
       "lng": 106.91,
       "surCapitale": true,
       "superficie": 1564110,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "me",
@@ -1209,7 +1329,8 @@
       "lng": 19.27,
       "surCapitale": true,
       "superficie": 13812,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "mz",
@@ -1219,7 +1340,8 @@
       "lng": 32.59,
       "surCapitale": true,
       "superficie": 801590,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "na",
@@ -1229,7 +1351,8 @@
       "lng": 17.08,
       "surCapitale": true,
       "superficie": 825615,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "nr",
@@ -1239,7 +1362,8 @@
       "lng": 166.92,
       "surCapitale": false,
       "superficie": 21,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "np",
@@ -1249,7 +1373,8 @@
       "lng": 85.31,
       "surCapitale": true,
       "superficie": 147181,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ni",
@@ -1259,7 +1384,8 @@
       "lng": -86.27,
       "surCapitale": true,
       "superficie": 130373,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "ne",
@@ -1269,7 +1395,8 @@
       "lng": 2.11,
       "surCapitale": true,
       "superficie": 1267000,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "ng",
@@ -1279,7 +1406,8 @@
       "lng": 7.53,
       "surCapitale": true,
       "superficie": 923768,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "no",
@@ -1289,7 +1417,8 @@
       "lng": 10.75,
       "surCapitale": true,
       "superficie": 323802,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "nz",
@@ -1299,7 +1428,8 @@
       "lng": 174.78,
       "surCapitale": true,
       "superficie": 270467,
-      "connu": true
+      "connu": true,
+      "continent": "Océanie"
     },
     {
       "code": "om",
@@ -1309,7 +1439,8 @@
       "lng": 58.59,
       "surCapitale": true,
       "superficie": 309500,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "ug",
@@ -1319,7 +1450,8 @@
       "lng": 32.58,
       "surCapitale": true,
       "superficie": 241550,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "uz",
@@ -1329,7 +1461,8 @@
       "lng": 69.29,
       "surCapitale": true,
       "superficie": 447400,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "pk",
@@ -1339,7 +1472,8 @@
       "lng": 73.16,
       "surCapitale": true,
       "superficie": 881912,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "pw",
@@ -1349,7 +1483,8 @@
       "lng": 134.63,
       "surCapitale": true,
       "superficie": 459,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "ps",
@@ -1359,7 +1494,8 @@
       "lng": 35.2,
       "surCapitale": false,
       "superficie": 6220,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "pa",
@@ -1369,7 +1505,8 @@
       "lng": -79.53,
       "surCapitale": true,
       "superficie": 75417,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "pg",
@@ -1379,7 +1516,8 @@
       "lng": 147.19,
       "surCapitale": true,
       "superficie": 462840,
-      "connu": true
+      "connu": true,
+      "continent": "Océanie"
     },
     {
       "code": "py",
@@ -1389,7 +1527,8 @@
       "lng": -57.64,
       "surCapitale": true,
       "superficie": 406752,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "nl",
@@ -1399,7 +1538,8 @@
       "lng": 4.91,
       "surCapitale": true,
       "superficie": 41850,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "pe",
@@ -1409,7 +1549,8 @@
       "lng": -77.05,
       "surCapitale": true,
       "superficie": 1285216,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "ph",
@@ -1419,7 +1560,8 @@
       "lng": 120.98,
       "surCapitale": true,
       "superficie": 342353,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "pl",
@@ -1429,7 +1571,8 @@
       "lng": 21,
       "surCapitale": true,
       "superficie": 312679,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "pt",
@@ -1439,7 +1582,8 @@
       "lng": -9.15,
       "surCapitale": true,
       "superficie": 92090,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "qa",
@@ -1449,7 +1593,8 @@
       "lng": 51.53,
       "surCapitale": true,
       "superficie": 11586,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "cd",
@@ -1459,7 +1604,8 @@
       "lng": 15.31,
       "surCapitale": true,
       "superficie": 2344858,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "cf",
@@ -1469,7 +1615,8 @@
       "lng": 18.56,
       "surCapitale": true,
       "superficie": 622984,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "do",
@@ -1479,7 +1626,8 @@
       "lng": -69.9,
       "surCapitale": true,
       "superficie": 48671,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "ro",
@@ -1489,7 +1637,8 @@
       "lng": 26.1,
       "surCapitale": true,
       "superficie": 238391,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "gb",
@@ -1499,7 +1648,8 @@
       "lng": -0.12,
       "surCapitale": true,
       "superficie": 242900,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "ru",
@@ -1509,7 +1659,8 @@
       "lng": 37.61,
       "surCapitale": true,
       "superficie": 17098242,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "rw",
@@ -1519,7 +1670,8 @@
       "lng": 30.06,
       "surCapitale": true,
       "superficie": 26338,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "kn",
@@ -1529,7 +1681,8 @@
       "lng": -62.72,
       "surCapitale": true,
       "superficie": 261,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "sm",
@@ -1539,7 +1692,8 @@
       "lng": 12.44,
       "surCapitale": true,
       "superficie": 61,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "vc",
@@ -1549,7 +1703,8 @@
       "lng": -61.21,
       "surCapitale": true,
       "superficie": 389,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "lc",
@@ -1559,7 +1714,8 @@
       "lng": -61,
       "surCapitale": true,
       "superficie": 616,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "sv",
@@ -1569,7 +1725,8 @@
       "lng": -89.2,
       "surCapitale": true,
       "superficie": 21041,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "ws",
@@ -1579,7 +1736,8 @@
       "lng": -171.74,
       "surCapitale": true,
       "superficie": 2842,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "st",
@@ -1589,7 +1747,8 @@
       "lng": 6.73,
       "surCapitale": true,
       "superficie": 964,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "sn",
@@ -1599,7 +1758,8 @@
       "lng": -17.48,
       "surCapitale": true,
       "superficie": 196722,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "rs",
@@ -1609,7 +1769,8 @@
       "lng": 20.47,
       "surCapitale": true,
       "superficie": 88361,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "sc",
@@ -1619,7 +1780,8 @@
       "lng": 55.45,
       "surCapitale": true,
       "superficie": 452,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "sl",
@@ -1629,7 +1791,8 @@
       "lng": -13.24,
       "surCapitale": true,
       "superficie": 71740,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "sg",
@@ -1639,7 +1802,8 @@
       "lng": 103.85,
       "surCapitale": true,
       "superficie": 710,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "sk",
@@ -1649,7 +1813,8 @@
       "lng": 17.12,
       "surCapitale": true,
       "superficie": 49037,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "si",
@@ -1659,7 +1824,8 @@
       "lng": 14.51,
       "surCapitale": true,
       "superficie": 20273,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "so",
@@ -1669,7 +1835,8 @@
       "lng": 45.36,
       "surCapitale": true,
       "superficie": 637657,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "sd",
@@ -1679,7 +1846,8 @@
       "lng": 32.53,
       "surCapitale": true,
       "superficie": 1886068,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "ss",
@@ -1689,7 +1857,8 @@
       "lng": 31.58,
       "surCapitale": true,
       "superficie": 619745,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "lk",
@@ -1699,7 +1868,8 @@
       "lng": 79.86,
       "surCapitale": true,
       "superficie": 65610,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "se",
@@ -1709,7 +1879,8 @@
       "lng": 18.1,
       "surCapitale": true,
       "superficie": 450295,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "ch",
@@ -1719,7 +1890,8 @@
       "lng": 7.47,
       "surCapitale": true,
       "superficie": 41284,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "sr",
@@ -1729,7 +1901,8 @@
       "lng": -55.17,
       "surCapitale": true,
       "superficie": 163820,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "sy",
@@ -1739,7 +1912,8 @@
       "lng": 36.3,
       "surCapitale": true,
       "superficie": 185180,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "tj",
@@ -1749,7 +1923,8 @@
       "lng": 68.77,
       "surCapitale": true,
       "superficie": 143100,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "tz",
@@ -1759,7 +1934,8 @@
       "lng": 35.75,
       "surCapitale": true,
       "superficie": 945087,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "td",
@@ -1769,7 +1945,8 @@
       "lng": 15.05,
       "surCapitale": true,
       "superficie": 1284000,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "cz",
@@ -1779,7 +1956,8 @@
       "lng": 14.46,
       "surCapitale": true,
       "superficie": 78865,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "th",
@@ -1789,7 +1967,8 @@
       "lng": 100.51,
       "surCapitale": true,
       "superficie": 513120,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "tl",
@@ -1799,7 +1978,8 @@
       "lng": 125.58,
       "surCapitale": true,
       "superficie": 14874,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "tg",
@@ -1809,7 +1989,8 @@
       "lng": 1.22,
       "surCapitale": true,
       "superficie": 56785,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "to",
@@ -1819,7 +2000,8 @@
       "lng": -175.22,
       "surCapitale": true,
       "superficie": 747,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "tt",
@@ -1829,7 +2011,8 @@
       "lng": -61.52,
       "surCapitale": true,
       "superficie": 5130,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Nord"
     },
     {
       "code": "tn",
@@ -1839,7 +2022,8 @@
       "lng": 10.18,
       "surCapitale": true,
       "superficie": 163610,
-      "connu": true
+      "connu": true,
+      "continent": "Afrique"
     },
     {
       "code": "tm",
@@ -1849,7 +2033,8 @@
       "lng": 58.38,
       "surCapitale": true,
       "superficie": 488100,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "tr",
@@ -1859,7 +2044,8 @@
       "lng": 32.86,
       "surCapitale": true,
       "superficie": 783562,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "tv",
@@ -1869,7 +2055,8 @@
       "lng": 179.22,
       "surCapitale": true,
       "superficie": 26,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "ua",
@@ -1879,7 +2066,8 @@
       "lng": 30.51,
       "surCapitale": true,
       "superficie": 603500,
-      "connu": true
+      "connu": true,
+      "continent": "Europe"
     },
     {
       "code": "uy",
@@ -1889,7 +2077,8 @@
       "lng": -56.17,
       "surCapitale": true,
       "superficie": 181034,
-      "connu": false
+      "connu": false,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "vu",
@@ -1899,7 +2088,8 @@
       "lng": 168.32,
       "surCapitale": true,
       "superficie": 12189,
-      "connu": false
+      "connu": false,
+      "continent": "Océanie"
     },
     {
       "code": "va",
@@ -1909,7 +2099,8 @@
       "lng": 12.45,
       "surCapitale": true,
       "superficie": 0,
-      "connu": false
+      "connu": false,
+      "continent": "Europe"
     },
     {
       "code": "ve",
@@ -1919,7 +2110,8 @@
       "lng": -66.92,
       "surCapitale": true,
       "superficie": 916445,
-      "connu": true
+      "connu": true,
+      "continent": "Amérique du Sud"
     },
     {
       "code": "vn",
@@ -1929,7 +2121,8 @@
       "lng": 105.85,
       "surCapitale": true,
       "superficie": 331212,
-      "connu": true
+      "connu": true,
+      "continent": "Asie"
     },
     {
       "code": "ye",
@@ -1939,7 +2132,8 @@
       "lng": 44.2,
       "surCapitale": true,
       "superficie": 527968,
-      "connu": false
+      "connu": false,
+      "continent": "Asie"
     },
     {
       "code": "zm",
@@ -1949,7 +2143,8 @@
       "lng": 28.28,
       "surCapitale": true,
       "superficie": 752612,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     },
     {
       "code": "zw",
@@ -1959,7 +2154,8 @@
       "lng": 31.04,
       "surCapitale": true,
       "superficie": 390757,
-      "connu": false
+      "connu": false,
+      "continent": "Afrique"
     }
   ]
 }

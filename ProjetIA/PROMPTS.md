@@ -40,5 +40,13 @@ Trace du travail avec l'IA (Claude Code) : prompts clés, erreurs de l'IA, corre
    - Mode inclinaison (`DeviceOrientationEvent`) : pencher le téléphone fait glisser la carte. Testé avec un capteur simulé (Chrome DevTools Protocol) : beaucoup trop rapide au premier essai (de l'Europe au Pacifique en 1,5 s), vitesse divisée par environ 2,5 et réponse au carré pour viser finement.
    - À tester sur un vrai téléphone : le capteur n'est accessible qu'en HTTPS (GitHub Pages).
 
+## 23/10/2026 — Fonctionnalités fun
+
+8. « Secouer pour un indice sur téléphone, confettis 3D et cube qui saute. »
+   - Indice = continent + cubes des autres continents grisés, −30 % sur la manche (règle proposée par l'IA). Touche I sur PC pour pouvoir tester. Champ `continent` ajouté par le script de génération.
+   - L'IA a remarqué que, vus de la distance de départ, cubes et confettis étaient trop petits pour qu'on voie l'animation : ajout d'un zoom de caméra sur une bonne réponse, et retour à la vue du joueur à la manche suivante.
+   - Pendant une secousse, l'inclinaison est mise en pause (sinon secouer ferait aussi bouger la carte).
+   - Tests : bonne réponse provoquée en repérant le bon cube par script (accès injecté uniquement dans le test), secousse simulée par des `DeviceMotionEvent` synthétiques (un mouvement léger ne déclenche rien, une vraie secousse oui).
+
 ## À compléter
 <!-- Ajouter ici chaque nouveau prompt important, l'erreur éventuelle de l'IA et la correction demandée. -->

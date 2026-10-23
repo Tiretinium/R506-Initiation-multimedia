@@ -7,10 +7,15 @@ const LEVEE_MARQUE = 1.0;
 // Distance minimale entre deux cubes, et déplacement au-delà duquel on relie le cube à sa vraie position
 const ESPACEMENT = TAILLE * 1.3;
 const SEUIL_FIL = TAILLE * 0.3;
-const DUREE_RETOURNEMENT_MS = 550;
+export const DUREE_RETOURNEMENT_MS = 550;
+// Animations de révélation : saut de joie (bon pays) et écrasement façon gelée (mauvais choix)
+const DUREE_SAUT_MS = 1100;
+const HAUTEUR_SAUT = 4;
+const DUREE_ECRASEMENT_MS = 1200;
 
 const COULEUR_BLANC = new THREE.Color(0xf2f2f2);
 const COULEUR_SELECTION = new THREE.Color(0x4da3ff);
+const COULEUR_HORS_INDICE = new THREE.Color(0x46525e); // cubes écartés par l'indice (autre continent)
 const COULEUR_BON = 0x3ecf6e;
 const COULEUR_FAUX = 0xff5a5a;
 
@@ -150,7 +155,10 @@ export function creerCubes(scene, pays, drapeaux) {
         const cube = {
             pays: p, mesh, halo, blanc, drapeau, visible: true,
             survole: false, selectionne: false, revele: false, marque: null,
+            horsIndice: false,
+            hauteur: TAILLE / 2, // hauteur de base, sans l'animation de saut
             retournement: null, // { debut, versDrapeau } pendant l'animation
+            saut: null, // { debut, type: 'joie' | 'ecrase' }
         };
         mesh.userData.cube = cube;
         return cube;
@@ -159,7 +167,7 @@ export function creerCubes(scene, pays, drapeaux) {
 
 // Met à jour la couleur du cube blanc selon son état
 export function majApparence(cube) {
-    cube.blanc.color.copy(cube.selectionne ? COULEUR_SELECTION : COULEUR_BLANC);
+    cube.blanc.color.copy(cube.selectionne ? COULEUR_SELECTION : cube.horsIndice ? COULEUR_HORS_INDICE : COULEUR_BLANC);
     cube.blanc.emissive.setHex(cube.survole && !cube.selectionne ? 0x222222 : 0x000000);
     cube.halo.visible = cube.marque !== null;
     if (cube.marque) cube.halo.material.color.setHex(cube.marque === 'bon' ? COULEUR_BON : COULEUR_FAUX);
@@ -170,9 +178,18 @@ export function retourner(cube, versDrapeau, delaiMs, maintenant) {
     cube.retournement = { debut: maintenant + delaiMs, versDrapeau };
 }
 
+// Lance l'animation de révélation du cube : 'joie' (bon pays) ou 'ecrase' (mauvais choix)
+export function animerSaut(cube, type, delaiMs, maintenant) {
+    cube.saut = { debut: maintenant + delaiMs, type };
+}
+
 // Remet le cube en blanc. Un retournement vers le drapeau encore en attente (vague de révélation
 // pas terminée) est annulé : sinon le drapeau apparaîtrait pendant la manche suivante.
 export function masquer(cube, delaiMs, maintenant) {
+    cube.saut = null;
+    cube.mesh.scale.set(1, 1, 1);
+    cube.mesh.rotation.y = 0;
+    cube.horsIndice = false;
     if (cube.revele) {
         retourner(cube, false, delaiMs, maintenant);
     } else {
@@ -182,13 +199,49 @@ export function masquer(cube, delaiMs, maintenant) {
     }
 }
 
-// Appelé à chaque image : hauteur du cube et animation de retournement
+// Saut de joie : un grand bond en faisant un tour sur lui-même, puis un petit rebond.
+// Renvoie le décalage vertical et applique rotation et écrasement à l'atterrissage.
+function animerJoie(mesh, t) {
+    const bond = (debut, fin, hauteur) => (t >= debut && t <= fin)
+        ? hauteur * 4 * ((t - debut) / (fin - debut)) * (1 - (t - debut) / (fin - debut)) : 0;
+    const decalage = bond(0, 0.6, HAUTEUR_SAUT) + bond(0.6, 0.85, HAUTEUR_SAUT * 0.25);
+    mesh.rotation.y = Math.min(t / 0.6, 1) * Math.PI * 2;
+    // Petit écrasement au moment où il retouche le plateau
+    const impact = Math.max(0, 1 - Math.abs(t - 0.6) / 0.06) + Math.max(0, 1 - Math.abs(t - 0.85) / 0.05) * 0.5;
+    mesh.scale.set(1 + 0.25 * impact, 1 - 0.35 * impact, 1 + 0.25 * impact);
+    return decalage - TAILLE / 2 * 0.35 * impact;
+}
+
+// Écrasement façon gelée : aplati d'un coup, puis il reprend sa forme en oscillant
+function animerEcrasement(mesh, t) {
+    const sy = 1 - 0.65 * Math.exp(-3.5 * t) * Math.cos(11 * t);
+    const sxz = 1 + (1 - sy) * 0.6;
+    mesh.scale.set(sxz, sy, sxz);
+    return -TAILLE / 2 * (1 - sy); // la base du cube reste posée
+}
+
+// Appelé à chaque image : hauteur du cube, animations de saut et de retournement
 export function animerCubes(cubes, maintenant) {
     for (const cube of cubes) {
         const levee = cube.marque ? LEVEE_MARQUE
             : (cube.survole || cube.selectionne) && !cube.revele ? LEVEE_SURVOL : 0;
         const hauteurCible = TAILLE / 2 + levee;
-        cube.mesh.position.y += (hauteurCible - cube.mesh.position.y) * 0.18;
+        cube.hauteur += (hauteurCible - cube.hauteur) * 0.18;
+
+        let decalage = 0;
+        const s = cube.saut;
+        if (s && maintenant >= s.debut) {
+            const duree = s.type === 'joie' ? DUREE_SAUT_MS : DUREE_ECRASEMENT_MS;
+            const t = Math.min((maintenant - s.debut) / duree, 1);
+            decalage = s.type === 'joie' ? animerJoie(cube.mesh, t) : animerEcrasement(cube.mesh, t);
+            if (t === 1) {
+                cube.saut = null;
+                cube.mesh.scale.set(1, 1, 1);
+                cube.mesh.rotation.y = 0;
+                decalage = 0;
+            }
+        }
+        cube.mesh.position.y = cube.hauteur + decalage;
 
         const r = cube.retournement;
         if (!r || maintenant < r.debut) continue;

@@ -17,6 +17,7 @@ export function creerControleInclinaison(camera, controls) {
     let actif = false;
     let neutre = null;
     let derniereMesure = null;
+    let suspenduJusqua = 0;
     const inclinaison = { x: 0, y: 0 };
     const avant = new THREE.Vector3();
     const droite = new THREE.Vector3();
@@ -73,7 +74,7 @@ export function creerControleInclinaison(camera, controls) {
 
     // Appelé à chaque image avec le temps écoulé (s)
     function maj(dt) {
-        if (!actif) return;
+        if (!actif || performance.now() < suspenduJusqua) return;
         const vx = reponse(inclinaison.x);
         const vy = reponse(inclinaison.y);
         if (vx === 0 && vy === 0) return;
@@ -96,6 +97,7 @@ export function creerControleInclinaison(camera, controls) {
         activer,
         desactiver,
         recentrer: () => { neutre = null; },
+        suspendre: (ms) => { suspenduJusqua = performance.now() + ms; },
         maj,
         get actif() { return actif; },
     };

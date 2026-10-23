@@ -311,6 +311,17 @@ Choisies à l'accueil (boutons Facile / Normal / Difficile), mémorisées dans l
   - Le capteur ne fonctionne qu'en **HTTPS** (GitHub Pages) ou sur `localhost` : sans mesure au bout de 1,5 s, un message l'explique.
 - **Interface** : bandeau, boutons et panneaux adaptés au portrait (≤ 700 px de large) et au paysage (≤ 500 px de haut), marges des encoches (`safe-area-inset`).
 
+### Effets et indice (V1.2)
+
+- **Saut de joie** : le bon cube fait un grand bond avec un tour sur lui-même, puis un petit rebond (écrasé à chaque atterrissage).
+- **Confettis 3D** : ~150 mini-cubes aux couleurs dominantes du drapeau (lues dans sa texture) jaillissent du cube, retombent et rebondissent sur la carte (`js/effets.js`, un seul `InstancedMesh`).
+- **Écrasement** : en cas d'erreur, le cube choisi s'aplatit puis reprend sa forme en oscillant, comme une gelée.
+- **Caméra** : sur une bonne réponse, elle s'approche du pays (distance 55) pour la célébration ; à la manche suivante, elle revient à la vue du joueur (sauf s'il a bougé la caméra entre-temps).
+- **Indice** : **secouer le téléphone** (`DeviceMotionEvent`, 3 pics à plus de 14 m/s² en moins de 0,9 s) — ou touche **I** sur PC. Affiche le continent du pays et grise les cubes des autres continents. Un indice par manche, il coûte **30 %** des points de la manche. Pendant une secousse, le mode inclinaison est mis en pause 1,2 s.
+  - iOS : permission demandée au clic sur « Jouer ».
+  - Continents (champ `continent` de `pays.json`) : Afrique, Amérique du Nord (avec l'Amérique centrale et les Caraïbes), Amérique du Sud, Asie, Europe, Océanie.
+- **Vibrations** (si le téléphone les gère) : courte à l'indice, double sur une bonne réponse, longue sur une erreur.
+
 ## 13. Évolutions prévues (V2 et plus)
 
 - Globe 3D : les cubes posés sur une sphère au lieu d'une carte plate.

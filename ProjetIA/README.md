@@ -34,6 +34,12 @@ Smartphone : un doigt pour tourner, deux doigts pour zoomer et déplacer, touche
 
 Un record est gardé pour chaque difficulté.
 
+## Indice et effets
+
+- **Indice** : secoue le téléphone (ou touche **I** sur PC) pour connaître le continent du pays ; les cubes des autres continents sont grisés. Un indice par manche, il coûte 30 % des points de la manche.
+- **Bonne réponse** : le cube saute de joie, des confettis aux couleurs du drapeau jaillissent et la caméra s'approche. Elle revient à ta vue à la manche suivante.
+- **Erreur** : le cube choisi s'écrase comme une gelée.
+
 ## Score
 
 Jusqu'à **1 000 pts par manche** (10 000 par partie), en deux moitiés :
@@ -52,6 +58,8 @@ Jusqu'à **1 000 pts par manche** (10 000 par partie), en deux moitiés :
 | `js/interaction.js` | Survol, clic et toucher par raycasting (cube le plus proche si le doigt tombe à côté) |
 | `js/orientation.js` | Mode inclinaison : `DeviceOrientationEvent` → déplacement de la carte |
 | `js/difficulte.js` | Réglages des difficultés |
+| `js/effets.js` | Confettis 3D (couleurs du drapeau, physique simple) |
+| `js/secousse.js` | Détection d'une secousse du téléphone (`DeviceMotionEvent`) |
 | `js/jeu.js` | Tirage, chrono, validation, révélation, manches, écran de fin |
 | `js/score.js` | Distance de Haversine et points |
 
