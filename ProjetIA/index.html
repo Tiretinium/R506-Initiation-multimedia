@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drapocube</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/",
+                "topojson-client": "https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/+esm"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="scene"></div>
+
+    <!-- Bandeau du haut : manche, drapeau à trouver, score, chrono -->
+    <header id="hud" class="cache">
+        <div id="manche">Manche 1/10</div>
+        <div id="cadre-drapeau"><img id="drapeau-cible" alt="Drapeau à trouver"></div>
+        <div id="score">0 pts</div>
+        <div id="chrono"><div id="chrono-barre"></div><span id="chrono-texte">30</span></div>
+    </header>
+
+    <button id="btn-valider" class="cache" disabled>Valider</button>
+    <div id="info-pays" class="cache"></div>
+
+    <!-- Résultat d'une manche -->
+    <section id="resultat" class="panneau cache">
+        <h2 id="resultat-titre"></h2>
+        <p id="resultat-texte"></p>
+        <p id="resultat-points"></p>
+        <button id="btn-suivant">Manche suivante</button>
+    </section>
+
+    <!-- Accueil -->
+    <section id="accueil" class="ecran">
+        <div class="carte-ecran">
+            <h1>Drapocube</h1>
+            <ol class="regles">
+                <li>Un drapeau est tiré au hasard.</li>
+                <li>Tu as 30 secondes pour cliquer sur le cube blanc posé sur la capitale de ce pays.</li>
+                <li>Valide : tous les cubes révèlent leur drapeau.</li>
+            </ol>
+            <p class="aide">Souris : clic gauche + glisser pour tourner, molette pour zoomer, clic droit + glisser pour déplacer.</p>
+            <p id="record"></p>
+            <button id="btn-jouer" disabled>Chargement…</button>
+        </div>
+    </section>
+
+    <!-- Fin de partie -->
+    <section id="fin" class="ecran cache">
+        <div class="carte-ecran">
+            <h1>Partie terminée</h1>
+            <p id="fin-total"></p>
+            <p id="fin-record"></p>
+            <table id="fin-tableau">
+                <thead><tr><th>#</th><th>Drapeau</th><th>Pays</th><th>Ton choix</th><th>Points</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <button id="btn-rejouer">Rejouer</button>
+        </div>
+    </section>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
