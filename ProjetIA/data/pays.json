@@ -7,7 +7,9 @@
       "capitale": "Kaboul",
       "lat": 34.52,
       "lng": 69.18,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 652230,
+      "connu": true
     },
     {
       "code": "za",
@@ -15,7 +17,9 @@
       "capitale": "Pretoria",
       "lat": -25.7,
       "lng": 28.23,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1221037,
+      "connu": true
     },
     {
       "code": "al",
@@ -23,7 +27,9 @@
       "capitale": "Tirana",
       "lat": 41.33,
       "lng": 19.82,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 28748,
+      "connu": false
     },
     {
       "code": "dz",
@@ -31,7 +37,9 @@
       "capitale": "Alger",
       "lat": 36.77,
       "lng": 3.05,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2381741,
+      "connu": true
     },
     {
       "code": "de",
@@ -39,7 +47,9 @@
       "capitale": "Berlin",
       "lat": 52.52,
       "lng": 13.4,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 357114,
+      "connu": true
     },
     {
       "code": "ad",
@@ -47,7 +57,9 @@
       "capitale": "Andorre-la-Vieille",
       "lat": 42.5,
       "lng": 1.52,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 468,
+      "connu": false
     },
     {
       "code": "ao",
@@ -55,7 +67,9 @@
       "capitale": "Luanda",
       "lat": -8.84,
       "lng": 13.23,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1246700,
+      "connu": true
     },
     {
       "code": "ag",
@@ -63,7 +77,9 @@
       "capitale": "Saint John's",
       "lat": 17.12,
       "lng": -61.85,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 442,
+      "connu": false
     },
     {
       "code": "sa",
@@ -71,7 +87,9 @@
       "capitale": "Riyad",
       "lat": 24.64,
       "lng": 46.77,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2149690,
+      "connu": true
     },
     {
       "code": "ar",
@@ -79,7 +97,9 @@
       "capitale": "Buenos Aires",
       "lat": -34.6,
       "lng": -58.4,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2780400,
+      "connu": true
     },
     {
       "code": "am",
@@ -87,7 +107,9 @@
       "capitale": "Erevan",
       "lat": 40.18,
       "lng": 44.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 29743,
+      "connu": false
     },
     {
       "code": "au",
@@ -95,7 +117,9 @@
       "capitale": "Canberra",
       "lat": -35.28,
       "lng": 149.13,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 7692024,
+      "connu": true
     },
     {
       "code": "at",
@@ -103,7 +127,9 @@
       "capitale": "Vienne",
       "lat": 48.2,
       "lng": 16.36,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 83871,
+      "connu": true
     },
     {
       "code": "az",
@@ -111,7 +137,9 @@
       "capitale": "Bakou",
       "lat": 40.4,
       "lng": 49.86,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 86600,
+      "connu": false
     },
     {
       "code": "bs",
@@ -119,7 +147,9 @@
       "capitale": "Nassau",
       "lat": 25.08,
       "lng": -77.35,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 13943,
+      "connu": false
     },
     {
       "code": "bh",
@@ -127,7 +157,9 @@
       "capitale": "Manama",
       "lat": 26.24,
       "lng": 50.58,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 765,
+      "connu": false
     },
     {
       "code": "bd",
@@ -135,7 +167,9 @@
       "capitale": "Dacca",
       "lat": 23.73,
       "lng": 90.41,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 147570,
+      "connu": true
     },
     {
       "code": "bb",
@@ -143,7 +177,9 @@
       "capitale": "Bridgetown",
       "lat": 13.1,
       "lng": -59.62,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 430,
+      "connu": false
     },
     {
       "code": "be",
@@ -151,7 +187,9 @@
       "capitale": "Bruxelles",
       "lat": 50.84,
       "lng": 4.33,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 30528,
+      "connu": false
     },
     {
       "code": "bz",
@@ -159,7 +197,9 @@
       "capitale": "Belmopan",
       "lat": 17.25,
       "lng": -88.77,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 22966,
+      "connu": false
     },
     {
       "code": "bj",
@@ -167,7 +207,9 @@
       "capitale": "Porto-Novo",
       "lat": 6.48,
       "lng": 2.62,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 112622,
+      "connu": false
     },
     {
       "code": "bt",
@@ -175,7 +217,9 @@
       "capitale": "Thimphou",
       "lat": 27.47,
       "lng": 89.64,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 38394,
+      "connu": false
     },
     {
       "code": "by",
@@ -183,7 +227,9 @@
       "capitale": "Minsk",
       "lat": 53.9,
       "lng": 27.56,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 207600,
+      "connu": false
     },
     {
       "code": "mm",
@@ -191,7 +237,9 @@
       "capitale": "Naypyidaw",
       "lat": 19.77,
       "lng": 96.12,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 676578,
+      "connu": false
     },
     {
       "code": "bo",
@@ -199,7 +247,9 @@
       "capitale": "Sucre",
       "lat": -19.04,
       "lng": -65.26,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1098581,
+      "connu": false
     },
     {
       "code": "ba",
@@ -207,7 +257,9 @@
       "capitale": "Sarajevo",
       "lat": 43.85,
       "lng": 18.38,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 51209,
+      "connu": false
     },
     {
       "code": "bw",
@@ -215,7 +267,9 @@
       "capitale": "Gaborone",
       "lat": -24.65,
       "lng": 25.91,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 582000,
+      "connu": false
     },
     {
       "code": "br",
@@ -223,7 +277,9 @@
       "capitale": "Brasilia",
       "lat": -15.78,
       "lng": -47.92,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 8515767,
+      "connu": true
     },
     {
       "code": "bn",
@@ -231,7 +287,9 @@
       "capitale": "Bandar Seri Begawan",
       "lat": 4.88,
       "lng": 114.93,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 5765,
+      "connu": false
     },
     {
       "code": "bg",
@@ -239,7 +297,9 @@
       "capitale": "Sofia",
       "lat": 42.69,
       "lng": 23.31,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 110879,
+      "connu": false
     },
     {
       "code": "bf",
@@ -247,7 +307,9 @@
       "capitale": "Ouagadougou",
       "lat": 12.37,
       "lng": -1.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 272967,
+      "connu": false
     },
     {
       "code": "bi",
@@ -255,7 +317,9 @@
       "capitale": "Gitega",
       "lat": -3.38,
       "lng": 29.36,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 27834,
+      "connu": false
     },
     {
       "code": "kh",
@@ -263,7 +327,9 @@
       "capitale": "Phnom Penh",
       "lat": 11.55,
       "lng": 104.91,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 181035,
+      "connu": false
     },
     {
       "code": "cm",
@@ -271,7 +337,9 @@
       "capitale": "Yaoundé",
       "lat": 3.87,
       "lng": 11.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 475442,
+      "connu": true
     },
     {
       "code": "ca",
@@ -279,7 +347,9 @@
       "capitale": "Ottawa",
       "lat": 45.42,
       "lng": -75.7,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 9984670,
+      "connu": true
     },
     {
       "code": "cv",
@@ -287,7 +357,9 @@
       "capitale": "Praia",
       "lat": 14.92,
       "lng": -23.52,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 4033,
+      "connu": false
     },
     {
       "code": "cl",
@@ -295,7 +367,9 @@
       "capitale": "Santiago",
       "lat": -33.45,
       "lng": -70.67,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 756102,
+      "connu": true
     },
     {
       "code": "cn",
@@ -303,7 +377,9 @@
       "capitale": "Pékin",
       "lat": 39.93,
       "lng": 116.39,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 9706961,
+      "connu": true
     },
     {
       "code": "cy",
@@ -311,7 +387,9 @@
       "capitale": "Nicosie",
       "lat": 35.17,
       "lng": 33.37,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 9251,
+      "connu": false
     },
     {
       "code": "co",
@@ -319,7 +397,9 @@
       "capitale": "Bogota",
       "lat": 4.6,
       "lng": -74.09,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1141748,
+      "connu": true
     },
     {
       "code": "km",
@@ -327,7 +407,9 @@
       "capitale": "Moroni",
       "lat": -11.7,
       "lng": 43.24,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1862,
+      "connu": false
     },
     {
       "code": "cg",
@@ -335,7 +417,9 @@
       "capitale": "Brazzaville",
       "lat": -4.26,
       "lng": 15.28,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 342000,
+      "connu": false
     },
     {
       "code": "kp",
@@ -343,7 +427,9 @@
       "capitale": "Pyongyang",
       "lat": 39.02,
       "lng": 125.75,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 120538,
+      "connu": false
     },
     {
       "code": "kr",
@@ -351,7 +437,9 @@
       "capitale": "Séoul",
       "lat": 37.57,
       "lng": 127,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 100210,
+      "connu": true
     },
     {
       "code": "cr",
@@ -359,7 +447,9 @@
       "capitale": "San José",
       "lat": 9.94,
       "lng": -84.09,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 51100,
+      "connu": false
     },
     {
       "code": "ci",
@@ -367,7 +457,9 @@
       "capitale": "Yamoussoukro",
       "lat": 6.82,
       "lng": -5.28,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 322463,
+      "connu": true
     },
     {
       "code": "hr",
@@ -375,7 +467,9 @@
       "capitale": "Zagreb",
       "lat": 45.8,
       "lng": 16,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 56594,
+      "connu": false
     },
     {
       "code": "cu",
@@ -383,7 +477,9 @@
       "capitale": "La Havane",
       "lat": 23.13,
       "lng": -82.37,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 109884,
+      "connu": true
     },
     {
       "code": "dk",
@@ -391,7 +487,9 @@
       "capitale": "Copenhague",
       "lat": 55.68,
       "lng": 12.56,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 43094,
+      "connu": true
     },
     {
       "code": "dj",
@@ -399,7 +497,9 @@
       "capitale": "Djibouti",
       "lat": 11.6,
       "lng": 43.15,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 23200,
+      "connu": false
     },
     {
       "code": "dm",
@@ -407,7 +507,9 @@
       "capitale": "Roseau",
       "lat": 15.3,
       "lng": -61.39,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 751,
+      "connu": false
     },
     {
       "code": "eg",
@@ -415,7 +517,9 @@
       "capitale": "Le Caire",
       "lat": 30.05,
       "lng": 31.25,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1002450,
+      "connu": true
     },
     {
       "code": "ae",
@@ -423,7 +527,9 @@
       "capitale": "Abou Dabi",
       "lat": 24.47,
       "lng": 54.37,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 83600,
+      "connu": false
     },
     {
       "code": "ec",
@@ -431,7 +537,9 @@
       "capitale": "Quito",
       "lat": -0.21,
       "lng": -78.5,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 276841,
+      "connu": true
     },
     {
       "code": "er",
@@ -439,7 +547,9 @@
       "capitale": "Asmara",
       "lat": 15.33,
       "lng": 38.93,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 117600,
+      "connu": false
     },
     {
       "code": "es",
@@ -447,7 +557,9 @@
       "capitale": "Madrid",
       "lat": 40.4,
       "lng": -3.69,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 505992,
+      "connu": true
     },
     {
       "code": "ee",
@@ -455,7 +567,9 @@
       "capitale": "Tallinn",
       "lat": 59.43,
       "lng": 24.73,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 45227,
+      "connu": false
     },
     {
       "code": "sz",
@@ -463,7 +577,9 @@
       "capitale": "Lobamba",
       "lat": -26.47,
       "lng": 31.2,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 17364,
+      "connu": false
     },
     {
       "code": "us",
@@ -471,7 +587,9 @@
       "capitale": "Washington",
       "lat": 38.9,
       "lng": -77.01,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 9372610,
+      "connu": true
     },
     {
       "code": "et",
@@ -479,7 +597,9 @@
       "capitale": "Addis-Abeba",
       "lat": 9.04,
       "lng": 38.7,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1104300,
+      "connu": true
     },
     {
       "code": "fj",
@@ -487,7 +607,9 @@
       "capitale": "Suva",
       "lat": -18.13,
       "lng": 178.44,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 18272,
+      "connu": false
     },
     {
       "code": "fi",
@@ -495,7 +617,9 @@
       "capitale": "Helsinki",
       "lat": 60.18,
       "lng": 24.93,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 338424,
+      "connu": true
     },
     {
       "code": "fr",
@@ -503,7 +627,9 @@
       "capitale": "Paris",
       "lat": 48.87,
       "lng": 2.33,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 551695,
+      "connu": true
     },
     {
       "code": "ga",
@@ -511,7 +637,9 @@
       "capitale": "Libreville",
       "lat": 0.39,
       "lng": 9.46,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 267668,
+      "connu": false
     },
     {
       "code": "gm",
@@ -519,7 +647,9 @@
       "capitale": "Banjul",
       "lat": 13.45,
       "lng": -16.59,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 10689,
+      "connu": false
     },
     {
       "code": "ge",
@@ -527,7 +657,9 @@
       "capitale": "Tbilissi",
       "lat": 41.73,
       "lng": 44.79,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 69700,
+      "connu": false
     },
     {
       "code": "gh",
@@ -535,7 +667,9 @@
       "capitale": "Accra",
       "lat": 5.55,
       "lng": -0.22,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 238533,
+      "connu": true
     },
     {
       "code": "gr",
@@ -543,7 +677,9 @@
       "capitale": "Athènes",
       "lat": 37.99,
       "lng": 23.73,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 131990,
+      "connu": true
     },
     {
       "code": "gd",
@@ -551,7 +687,9 @@
       "capitale": "Saint-Georges",
       "lat": 12.05,
       "lng": -61.74,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 344,
+      "connu": false
     },
     {
       "code": "gt",
@@ -559,7 +697,9 @@
       "capitale": "Guatemala",
       "lat": 14.62,
       "lng": -90.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 108889,
+      "connu": false
     },
     {
       "code": "gn",
@@ -567,7 +707,9 @@
       "capitale": "Conakry",
       "lat": 9.53,
       "lng": -13.68,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 245857,
+      "connu": false
     },
     {
       "code": "gq",
@@ -575,7 +717,9 @@
       "capitale": "Ciudad de la Paz",
       "lat": 3.75,
       "lng": 8.78,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 28051,
+      "connu": false
     },
     {
       "code": "gw",
@@ -583,7 +727,9 @@
       "capitale": "Bissau",
       "lat": 11.87,
       "lng": -15.6,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 36125,
+      "connu": false
     },
     {
       "code": "gy",
@@ -591,7 +737,9 @@
       "capitale": "Georgetown",
       "lat": 6.8,
       "lng": -58.17,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 214969,
+      "connu": false
     },
     {
       "code": "ht",
@@ -599,7 +747,9 @@
       "capitale": "Port-au-Prince",
       "lat": 18.54,
       "lng": -72.34,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 27750,
+      "connu": false
     },
     {
       "code": "hn",
@@ -607,7 +757,9 @@
       "capitale": "Tegucigalpa",
       "lat": 14.1,
       "lng": -87.22,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 112492,
+      "connu": false
     },
     {
       "code": "hu",
@@ -615,7 +767,9 @@
       "capitale": "Budapest",
       "lat": 47.5,
       "lng": 19.08,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 93028,
+      "connu": true
     },
     {
       "code": "mh",
@@ -623,7 +777,9 @@
       "capitale": "Majuro",
       "lat": 7.1,
       "lng": 171.38,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 181,
+      "connu": false
     },
     {
       "code": "sb",
@@ -631,7 +787,9 @@
       "capitale": "Honiara",
       "lat": -9.44,
       "lng": 159.95,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 28896,
+      "connu": false
     },
     {
       "code": "in",
@@ -639,7 +797,9 @@
       "capitale": "New Delhi",
       "lat": 28.6,
       "lng": 77.2,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 3287590,
+      "connu": true
     },
     {
       "code": "id",
@@ -647,7 +807,9 @@
       "capitale": "Jakarta",
       "lat": -6.17,
       "lng": 106.83,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1904569,
+      "connu": true
     },
     {
       "code": "iq",
@@ -655,7 +817,9 @@
       "capitale": "Bagdad",
       "lat": 33.34,
       "lng": 44.39,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 438317,
+      "connu": true
     },
     {
       "code": "ir",
@@ -663,7 +827,9 @@
       "capitale": "Téhéran",
       "lat": 35.67,
       "lng": 51.42,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1648195,
+      "connu": true
     },
     {
       "code": "ie",
@@ -671,7 +837,9 @@
       "capitale": "Dublin",
       "lat": 53.34,
       "lng": -6.25,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 70273,
+      "connu": true
     },
     {
       "code": "is",
@@ -679,7 +847,9 @@
       "capitale": "Reykjavik",
       "lat": 64.15,
       "lng": -21.95,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 103000,
+      "connu": true
     },
     {
       "code": "il",
@@ -687,7 +857,9 @@
       "capitale": "Jérusalem",
       "lat": 31.78,
       "lng": 35.21,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 20770,
+      "connu": true
     },
     {
       "code": "it",
@@ -695,7 +867,9 @@
       "capitale": "Rome",
       "lat": 41.9,
       "lng": 12.48,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 301336,
+      "connu": true
     },
     {
       "code": "jm",
@@ -703,7 +877,9 @@
       "capitale": "Kingston",
       "lat": 17.98,
       "lng": -76.77,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 10991,
+      "connu": true
     },
     {
       "code": "jp",
@@ -711,7 +887,9 @@
       "capitale": "Tokyo",
       "lat": 35.69,
       "lng": 139.75,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 377930,
+      "connu": true
     },
     {
       "code": "jo",
@@ -719,7 +897,9 @@
       "capitale": "Amman",
       "lat": 31.95,
       "lng": 35.93,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 89342,
+      "connu": false
     },
     {
       "code": "kz",
@@ -727,7 +907,9 @@
       "capitale": "Astana",
       "lat": 51.18,
       "lng": 71.43,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2724900,
+      "connu": true
     },
     {
       "code": "ke",
@@ -735,7 +917,9 @@
       "capitale": "Nairobi",
       "lat": -1.28,
       "lng": 36.81,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 580367,
+      "connu": true
     },
     {
       "code": "kg",
@@ -743,7 +927,9 @@
       "capitale": "Bichkek",
       "lat": 42.88,
       "lng": 74.58,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 199951,
+      "connu": false
     },
     {
       "code": "ki",
@@ -751,7 +937,9 @@
       "capitale": "Tarawa-Sud",
       "lat": 1.34,
       "lng": 173.02,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 811,
+      "connu": false
     },
     {
       "code": "xk",
@@ -759,7 +947,9 @@
       "capitale": "Pristina",
       "lat": 42.67,
       "lng": 21.17,
-      "surCapitale": false
+      "surCapitale": false,
+      "superficie": 10908,
+      "connu": false
     },
     {
       "code": "kw",
@@ -767,7 +957,9 @@
       "capitale": "Koweït",
       "lat": 29.37,
       "lng": 47.98,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 17818,
+      "connu": false
     },
     {
       "code": "la",
@@ -775,7 +967,9 @@
       "capitale": "Vientiane",
       "lat": 17.97,
       "lng": 102.6,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 236800,
+      "connu": false
     },
     {
       "code": "ls",
@@ -783,7 +977,9 @@
       "capitale": "Maseru",
       "lat": -29.32,
       "lng": 27.48,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 30355,
+      "connu": false
     },
     {
       "code": "lv",
@@ -791,7 +987,9 @@
       "capitale": "Riga",
       "lat": 56.95,
       "lng": 24.1,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 64559,
+      "connu": false
     },
     {
       "code": "lb",
@@ -799,7 +997,9 @@
       "capitale": "Beyrouth",
       "lat": 33.87,
       "lng": 35.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 10452,
+      "connu": false
     },
     {
       "code": "lr",
@@ -807,7 +1007,9 @@
       "capitale": "Monrovia",
       "lat": 6.31,
       "lng": -10.8,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 111369,
+      "connu": false
     },
     {
       "code": "ly",
@@ -815,7 +1017,9 @@
       "capitale": "Tripoli",
       "lat": 32.89,
       "lng": 13.18,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1759540,
+      "connu": true
     },
     {
       "code": "li",
@@ -823,7 +1027,9 @@
       "capitale": "Vaduz",
       "lat": 47.13,
       "lng": 9.52,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 160,
+      "connu": false
     },
     {
       "code": "lt",
@@ -831,7 +1037,9 @@
       "capitale": "Vilnius",
       "lat": 54.68,
       "lng": 25.32,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 65300,
+      "connu": false
     },
     {
       "code": "lu",
@@ -839,7 +1047,9 @@
       "capitale": "Luxembourg",
       "lat": 49.61,
       "lng": 6.13,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2586,
+      "connu": false
     },
     {
       "code": "mk",
@@ -847,7 +1057,9 @@
       "capitale": "Skopje",
       "lat": 42,
       "lng": 21.43,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 25713,
+      "connu": false
     },
     {
       "code": "mg",
@@ -855,7 +1067,9 @@
       "capitale": "Antananarivo",
       "lat": -18.91,
       "lng": 47.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 587041,
+      "connu": true
     },
     {
       "code": "my",
@@ -863,7 +1077,9 @@
       "capitale": "Kuala Lumpur",
       "lat": 3.17,
       "lng": 101.7,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 330803,
+      "connu": false
     },
     {
       "code": "mw",
@@ -871,7 +1087,9 @@
       "capitale": "Lilongwe",
       "lat": -13.98,
       "lng": 33.78,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 118484,
+      "connu": false
     },
     {
       "code": "mv",
@@ -879,7 +1097,9 @@
       "capitale": "Malé",
       "lat": 4.17,
       "lng": 73.5,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 300,
+      "connu": false
     },
     {
       "code": "ml",
@@ -887,7 +1107,9 @@
       "capitale": "Bamako",
       "lat": 12.65,
       "lng": -8,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1240192,
+      "connu": true
     },
     {
       "code": "mt",
@@ -895,7 +1117,9 @@
       "capitale": "La Valette",
       "lat": 35.9,
       "lng": 14.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 316,
+      "connu": false
     },
     {
       "code": "ma",
@@ -903,7 +1127,9 @@
       "capitale": "Rabat",
       "lat": 34.03,
       "lng": -6.84,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 446550,
+      "connu": true
     },
     {
       "code": "mu",
@@ -911,7 +1137,9 @@
       "capitale": "Port-Louis",
       "lat": -20.17,
       "lng": 57.5,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2040,
+      "connu": false
     },
     {
       "code": "mr",
@@ -919,7 +1147,9 @@
       "capitale": "Nouakchott",
       "lat": 18.09,
       "lng": -15.98,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1030700,
+      "connu": false
     },
     {
       "code": "mx",
@@ -927,7 +1157,9 @@
       "capitale": "Mexico",
       "lat": 19.44,
       "lng": -99.13,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1964375,
+      "connu": true
     },
     {
       "code": "fm",
@@ -935,7 +1167,9 @@
       "capitale": "Palikir",
       "lat": 6.92,
       "lng": 158.15,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 702,
+      "connu": false
     },
     {
       "code": "md",
@@ -943,7 +1177,9 @@
       "capitale": "Chișinău",
       "lat": 47.01,
       "lng": 28.86,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 33846,
+      "connu": false
     },
     {
       "code": "mc",
@@ -951,7 +1187,9 @@
       "capitale": "Monaco",
       "lat": 43.74,
       "lng": 7.41,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2,
+      "connu": false
     },
     {
       "code": "mn",
@@ -959,7 +1197,9 @@
       "capitale": "Oulan-Bator",
       "lat": 47.92,
       "lng": 106.91,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1564110,
+      "connu": true
     },
     {
       "code": "me",
@@ -967,7 +1207,9 @@
       "capitale": "Podgorica",
       "lat": 42.47,
       "lng": 19.27,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 13812,
+      "connu": false
     },
     {
       "code": "mz",
@@ -975,7 +1217,9 @@
       "capitale": "Maputo",
       "lat": -25.95,
       "lng": 32.59,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 801590,
+      "connu": false
     },
     {
       "code": "na",
@@ -983,7 +1227,9 @@
       "capitale": "Windhoek",
       "lat": -22.57,
       "lng": 17.08,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 825615,
+      "connu": false
     },
     {
       "code": "nr",
@@ -991,7 +1237,9 @@
       "capitale": "Yaren",
       "lat": -0.53,
       "lng": 166.92,
-      "surCapitale": false
+      "surCapitale": false,
+      "superficie": 21,
+      "connu": false
     },
     {
       "code": "np",
@@ -999,7 +1247,9 @@
       "capitale": "Katmandou",
       "lat": 27.72,
       "lng": 85.31,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 147181,
+      "connu": true
     },
     {
       "code": "ni",
@@ -1007,7 +1257,9 @@
       "capitale": "Managua",
       "lat": 12.15,
       "lng": -86.27,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 130373,
+      "connu": false
     },
     {
       "code": "ne",
@@ -1015,7 +1267,9 @@
       "capitale": "Niamey",
       "lat": 13.52,
       "lng": 2.11,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1267000,
+      "connu": false
     },
     {
       "code": "ng",
@@ -1023,7 +1277,9 @@
       "capitale": "Abuja",
       "lat": 9.09,
       "lng": 7.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 923768,
+      "connu": true
     },
     {
       "code": "no",
@@ -1031,7 +1287,9 @@
       "capitale": "Oslo",
       "lat": 59.92,
       "lng": 10.75,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 323802,
+      "connu": true
     },
     {
       "code": "nz",
@@ -1039,7 +1297,9 @@
       "capitale": "Wellington",
       "lat": -41.3,
       "lng": 174.78,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 270467,
+      "connu": true
     },
     {
       "code": "om",
@@ -1047,7 +1307,9 @@
       "capitale": "Mascate",
       "lat": 23.61,
       "lng": 58.59,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 309500,
+      "connu": false
     },
     {
       "code": "ug",
@@ -1055,7 +1317,9 @@
       "capitale": "Kampala",
       "lat": 0.32,
       "lng": 32.58,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 241550,
+      "connu": false
     },
     {
       "code": "uz",
@@ -1063,7 +1327,9 @@
       "capitale": "Tachkent",
       "lat": 41.31,
       "lng": 69.29,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 447400,
+      "connu": false
     },
     {
       "code": "pk",
@@ -1071,7 +1337,9 @@
       "capitale": "Islamabad",
       "lat": 33.7,
       "lng": 73.16,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 881912,
+      "connu": true
     },
     {
       "code": "pw",
@@ -1079,7 +1347,9 @@
       "capitale": "Ngerulmud",
       "lat": 7.49,
       "lng": 134.63,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 459,
+      "connu": false
     },
     {
       "code": "ps",
@@ -1087,7 +1357,9 @@
       "capitale": "Ramallah",
       "lat": 31.9,
       "lng": 35.2,
-      "surCapitale": false
+      "surCapitale": false,
+      "superficie": 6220,
+      "connu": false
     },
     {
       "code": "pa",
@@ -1095,7 +1367,9 @@
       "capitale": "Panama",
       "lat": 8.97,
       "lng": -79.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 75417,
+      "connu": false
     },
     {
       "code": "pg",
@@ -1103,7 +1377,9 @@
       "capitale": "Port Moresby",
       "lat": -9.46,
       "lng": 147.19,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 462840,
+      "connu": true
     },
     {
       "code": "py",
@@ -1111,7 +1387,9 @@
       "capitale": "Asuncion",
       "lat": -25.29,
       "lng": -57.64,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 406752,
+      "connu": false
     },
     {
       "code": "nl",
@@ -1119,7 +1397,9 @@
       "capitale": "Amsterdam",
       "lat": 52.35,
       "lng": 4.91,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 41850,
+      "connu": true
     },
     {
       "code": "pe",
@@ -1127,7 +1407,9 @@
       "capitale": "Lima",
       "lat": -12.05,
       "lng": -77.05,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1285216,
+      "connu": true
     },
     {
       "code": "ph",
@@ -1135,7 +1417,9 @@
       "capitale": "Manille",
       "lat": 14.61,
       "lng": 120.98,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 342353,
+      "connu": true
     },
     {
       "code": "pl",
@@ -1143,7 +1427,9 @@
       "capitale": "Varsovie",
       "lat": 52.25,
       "lng": 21,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 312679,
+      "connu": true
     },
     {
       "code": "pt",
@@ -1151,7 +1437,9 @@
       "capitale": "Lisbonne",
       "lat": 38.72,
       "lng": -9.15,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 92090,
+      "connu": true
     },
     {
       "code": "qa",
@@ -1159,7 +1447,9 @@
       "capitale": "Doha",
       "lat": 25.29,
       "lng": 51.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 11586,
+      "connu": false
     },
     {
       "code": "cd",
@@ -1167,7 +1457,9 @@
       "capitale": "Kinshasa",
       "lat": -4.33,
       "lng": 15.31,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2344858,
+      "connu": true
     },
     {
       "code": "cf",
@@ -1175,7 +1467,9 @@
       "capitale": "Bangui",
       "lat": 4.37,
       "lng": 18.56,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 622984,
+      "connu": false
     },
     {
       "code": "do",
@@ -1183,7 +1477,9 @@
       "capitale": "Saint-Domingue",
       "lat": 18.47,
       "lng": -69.9,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 48671,
+      "connu": false
     },
     {
       "code": "ro",
@@ -1191,7 +1487,9 @@
       "capitale": "Bucarest",
       "lat": 44.44,
       "lng": 26.1,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 238391,
+      "connu": true
     },
     {
       "code": "gb",
@@ -1199,7 +1497,9 @@
       "capitale": "Londres",
       "lat": 51.5,
       "lng": -0.12,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 242900,
+      "connu": true
     },
     {
       "code": "ru",
@@ -1207,7 +1507,9 @@
       "capitale": "Moscou",
       "lat": 55.75,
       "lng": 37.61,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 17098242,
+      "connu": true
     },
     {
       "code": "rw",
@@ -1215,7 +1517,9 @@
       "capitale": "Kigali",
       "lat": -1.95,
       "lng": 30.06,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 26338,
+      "connu": false
     },
     {
       "code": "kn",
@@ -1223,7 +1527,9 @@
       "capitale": "Basseterre",
       "lat": 17.3,
       "lng": -62.72,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 261,
+      "connu": false
     },
     {
       "code": "sm",
@@ -1231,7 +1537,9 @@
       "capitale": "Saint-Marin",
       "lat": 43.94,
       "lng": 12.44,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 61,
+      "connu": false
     },
     {
       "code": "vc",
@@ -1239,7 +1547,9 @@
       "capitale": "Kingstown",
       "lat": 13.15,
       "lng": -61.21,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 389,
+      "connu": false
     },
     {
       "code": "lc",
@@ -1247,7 +1557,9 @@
       "capitale": "Castries",
       "lat": 14,
       "lng": -61,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 616,
+      "connu": false
     },
     {
       "code": "sv",
@@ -1255,7 +1567,9 @@
       "capitale": "San Salvador",
       "lat": 13.71,
       "lng": -89.2,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 21041,
+      "connu": false
     },
     {
       "code": "ws",
@@ -1263,7 +1577,9 @@
       "capitale": "Apia",
       "lat": -13.84,
       "lng": -171.74,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 2842,
+      "connu": false
     },
     {
       "code": "st",
@@ -1271,7 +1587,9 @@
       "capitale": "São Tomé",
       "lat": 0.33,
       "lng": 6.73,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 964,
+      "connu": false
     },
     {
       "code": "sn",
@@ -1279,7 +1597,9 @@
       "capitale": "Dakar",
       "lat": 14.72,
       "lng": -17.48,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 196722,
+      "connu": true
     },
     {
       "code": "rs",
@@ -1287,7 +1607,9 @@
       "capitale": "Belgrade",
       "lat": 44.82,
       "lng": 20.47,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 88361,
+      "connu": true
     },
     {
       "code": "sc",
@@ -1295,7 +1617,9 @@
       "capitale": "Victoria",
       "lat": -4.62,
       "lng": 55.45,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 452,
+      "connu": false
     },
     {
       "code": "sl",
@@ -1303,7 +1627,9 @@
       "capitale": "Freetown",
       "lat": 8.47,
       "lng": -13.24,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 71740,
+      "connu": false
     },
     {
       "code": "sg",
@@ -1311,7 +1637,9 @@
       "capitale": "Singapour",
       "lat": 1.29,
       "lng": 103.85,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 710,
+      "connu": false
     },
     {
       "code": "sk",
@@ -1319,7 +1647,9 @@
       "capitale": "Bratislava",
       "lat": 48.15,
       "lng": 17.12,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 49037,
+      "connu": false
     },
     {
       "code": "si",
@@ -1327,7 +1657,9 @@
       "capitale": "Ljubljana",
       "lat": 46.06,
       "lng": 14.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 20273,
+      "connu": false
     },
     {
       "code": "so",
@@ -1335,7 +1667,9 @@
       "capitale": "Mogadiscio",
       "lat": 2.07,
       "lng": 45.36,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 637657,
+      "connu": false
     },
     {
       "code": "sd",
@@ -1343,7 +1677,9 @@
       "capitale": "Khartoum",
       "lat": 15.59,
       "lng": 32.53,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1886068,
+      "connu": true
     },
     {
       "code": "ss",
@@ -1351,7 +1687,9 @@
       "capitale": "Djouba",
       "lat": 4.83,
       "lng": 31.58,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 619745,
+      "connu": false
     },
     {
       "code": "lk",
@@ -1359,7 +1697,9 @@
       "capitale": "Colombo",
       "lat": 6.93,
       "lng": 79.86,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 65610,
+      "connu": false
     },
     {
       "code": "se",
@@ -1367,7 +1707,9 @@
       "capitale": "Stockholm",
       "lat": 59.35,
       "lng": 18.1,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 450295,
+      "connu": true
     },
     {
       "code": "ch",
@@ -1375,7 +1717,9 @@
       "capitale": "Berne",
       "lat": 46.92,
       "lng": 7.47,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 41284,
+      "connu": true
     },
     {
       "code": "sr",
@@ -1383,7 +1727,9 @@
       "capitale": "Paramaribo",
       "lat": 5.84,
       "lng": -55.17,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 163820,
+      "connu": false
     },
     {
       "code": "sy",
@@ -1391,7 +1737,9 @@
       "capitale": "Damas",
       "lat": 33.5,
       "lng": 36.3,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 185180,
+      "connu": false
     },
     {
       "code": "tj",
@@ -1399,7 +1747,9 @@
       "capitale": "Douchanbé",
       "lat": 38.56,
       "lng": 68.77,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 143100,
+      "connu": false
     },
     {
       "code": "tz",
@@ -1407,7 +1757,9 @@
       "capitale": "Dodoma",
       "lat": -6.18,
       "lng": 35.75,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 945087,
+      "connu": true
     },
     {
       "code": "td",
@@ -1415,7 +1767,9 @@
       "capitale": "N'Djaména",
       "lat": 12.12,
       "lng": 15.05,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 1284000,
+      "connu": false
     },
     {
       "code": "cz",
@@ -1423,7 +1777,9 @@
       "capitale": "Prague",
       "lat": 50.09,
       "lng": 14.46,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 78865,
+      "connu": true
     },
     {
       "code": "th",
@@ -1431,7 +1787,9 @@
       "capitale": "Bangkok",
       "lat": 13.75,
       "lng": 100.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 513120,
+      "connu": true
     },
     {
       "code": "tl",
@@ -1439,7 +1797,9 @@
       "capitale": "Dili",
       "lat": -8.56,
       "lng": 125.58,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 14874,
+      "connu": false
     },
     {
       "code": "tg",
@@ -1447,7 +1807,9 @@
       "capitale": "Lomé",
       "lat": 6.13,
       "lng": 1.22,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 56785,
+      "connu": false
     },
     {
       "code": "to",
@@ -1455,7 +1817,9 @@
       "capitale": "Nukuʻalofa",
       "lat": -21.14,
       "lng": -175.22,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 747,
+      "connu": false
     },
     {
       "code": "tt",
@@ -1463,7 +1827,9 @@
       "capitale": "Port-d'Espagne",
       "lat": 10.65,
       "lng": -61.52,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 5130,
+      "connu": false
     },
     {
       "code": "tn",
@@ -1471,7 +1837,9 @@
       "capitale": "Tunis",
       "lat": 36.8,
       "lng": 10.18,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 163610,
+      "connu": true
     },
     {
       "code": "tm",
@@ -1479,7 +1847,9 @@
       "capitale": "Achgabat",
       "lat": 37.95,
       "lng": 58.38,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 488100,
+      "connu": false
     },
     {
       "code": "tr",
@@ -1487,7 +1857,9 @@
       "capitale": "Ankara",
       "lat": 39.93,
       "lng": 32.86,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 783562,
+      "connu": true
     },
     {
       "code": "tv",
@@ -1495,7 +1867,9 @@
       "capitale": "Funafuti",
       "lat": -8.52,
       "lng": 179.22,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 26,
+      "connu": false
     },
     {
       "code": "ua",
@@ -1503,7 +1877,9 @@
       "capitale": "Kiev",
       "lat": 50.44,
       "lng": 30.51,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 603500,
+      "connu": true
     },
     {
       "code": "uy",
@@ -1511,7 +1887,9 @@
       "capitale": "Montevideo",
       "lat": -34.86,
       "lng": -56.17,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 181034,
+      "connu": false
     },
     {
       "code": "vu",
@@ -1519,7 +1897,9 @@
       "capitale": "Port-Vila",
       "lat": -17.73,
       "lng": 168.32,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 12189,
+      "connu": false
     },
     {
       "code": "va",
@@ -1527,7 +1907,9 @@
       "capitale": "Vatican",
       "lat": 41.9,
       "lng": 12.45,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 0,
+      "connu": false
     },
     {
       "code": "ve",
@@ -1535,7 +1917,9 @@
       "capitale": "Caracas",
       "lat": 10.5,
       "lng": -66.92,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 916445,
+      "connu": true
     },
     {
       "code": "vn",
@@ -1543,7 +1927,9 @@
       "capitale": "Hanoï",
       "lat": 21.04,
       "lng": 105.85,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 331212,
+      "connu": true
     },
     {
       "code": "ye",
@@ -1551,7 +1937,9 @@
       "capitale": "Sanaa",
       "lat": 15.36,
       "lng": 44.2,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 527968,
+      "connu": false
     },
     {
       "code": "zm",
@@ -1559,7 +1947,9 @@
       "capitale": "Lusaka",
       "lat": -15.41,
       "lng": 28.28,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 752612,
+      "connu": false
     },
     {
       "code": "zw",
@@ -1567,7 +1957,9 @@
       "capitale": "Harare",
       "lat": -17.82,
       "lng": 31.04,
-      "surCapitale": true
+      "surCapitale": true,
+      "superficie": 390757,
+      "connu": false
     }
   ]
 }

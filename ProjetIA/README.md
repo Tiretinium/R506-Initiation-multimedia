@@ -1,6 +1,6 @@
-# Drapocube — V1 PC
+# Drapocube
 
-Jeu de géographie en 3D : un drapeau est tiré au hasard, tu as 30 secondes pour cliquer sur le cube blanc posé sur la capitale de ce pays. À la validation, tous les cubes se retournent et révèlent leur drapeau.
+Jeu de géographie en 3D, sur PC et smartphone : un drapeau est tiré au hasard, tu as quelques secondes pour choisir sur le cube blanc posé sur la capitale de ce pays. À la validation, tous les cubes se retournent et révèlent leur drapeau.
 
 Projet de l'exercice IA du cours R506 (Sensibilisation à la programmation multimédia). Cahier des charges : [cahier-des-charges-v1-pc.md](cahier-des-charges-v1-pc.md).
 
@@ -11,21 +11,35 @@ Le jeu charge des fichiers (`fetch`) et des modules ES : il faut un serveur loca
 - VS Code : clic droit sur `index.html` → *Open with Live Server*
 - ou en ligne de commande, depuis ce dossier : `python -m http.server 8000`, puis ouvrir http://localhost:8000
 
+Sur smartphone, le mode **Inclinaison** a besoin d'une page en **HTTPS** : teste-le sur la version GitHub Pages (une adresse locale du type `http://192.168…` ne donne pas accès au capteur).
+
 ## Comment jouer
 
-1. Clique sur **Jouer** : une roulette de drapeaux s'arrête sur le pays à trouver.
-2. Le chrono de 30 s démarre. Clique sur le cube de ce pays (il devient bleu), puis **Valider** (ou Entrée).
+1. Choisis la difficulté, puis **Jouer** : une roulette de drapeaux s'arrête sur le pays à trouver.
+2. Le chrono démarre. Clique sur le cube de ce pays (il devient bleu), puis **Valider** (ou Entrée).
 3. Les cubes révèlent leur drapeau : vert = bon pays, rouge = ton choix s'il est faux. Survole un cube pour voir son nom.
 4. 10 manches, puis l'écran de fin avec le détail.
 
 Souris : clic gauche + glisser pour tourner, molette pour zoomer, clic droit + glisser pour déplacer.
+
+Smartphone : un doigt pour tourner, deux doigts pour zoomer et déplacer, toucher un cube pour le choisir. Le bouton **Inclinaison** permet de se déplacer sur la carte en penchant le téléphone (la position au moment de l'activation est le point neutre). Après la révélation, touche un cube pour voir son nom.
+
+## Difficultés
+
+| Difficulté | Cubes sur la carte | Pays tirés | Chrono |
+| --- | --- | --- | --- |
+| Facile | 76 pays connus | Ces 76 pays | 40 s |
+| Normal | Les 196 | Pays de plus de 10 000 km² (162) | 30 s |
+| Difficile | Les 196 | Les 196, micro-États compris | 20 s |
+
+Un record est gardé pour chaque difficulté.
 
 ## Score
 
 Jusqu'à **1 000 pts par manche** (10 000 par partie), en deux moitiés :
 
 - **Position, sur 500** : 500 pour le bon pays, sinon `500 × exp(−distance / 1500 km)` (distance entre capitales)
-- **Rapidité, sur 500** : `500 × (secondes restantes / 30)`, multiplié par la même précision que la position, pour que cliquer vite au hasard ne rapporte rien
+- **Rapidité, sur 500** : `500 × (secondes restantes / durée du chrono)`, multiplié par la même précision que la position, pour que cliquer vite au hasard ne rapporte rien
 - Temps écoulé : 0 pt
 
 ## Technique
@@ -35,7 +49,9 @@ Jusqu'à **1 000 pts par manche** (10 000 par partie), en deux moitiés :
 | `js/main.js` | Chargement des données, boucle d'animation |
 | `js/scene.js` | Scène Three.js, caméra, OrbitControls, carte du monde dessinée dans un canvas |
 | `js/cubes.js` | Cubes, textures des drapeaux, états et animation de retournement |
-| `js/interaction.js` | Survol et clic par raycasting |
+| `js/interaction.js` | Survol, clic et toucher par raycasting (cube le plus proche si le doigt tombe à côté) |
+| `js/orientation.js` | Mode inclinaison : `DeviceOrientationEvent` → déplacement de la carte |
+| `js/difficulte.js` | Réglages des difficultés |
 | `js/jeu.js` | Tirage, chrono, validation, révélation, manches, écran de fin |
 | `js/score.js` | Distance de Haversine et points |
 

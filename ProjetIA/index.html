@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Drapocube</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="css/style.css">
@@ -28,7 +28,9 @@
     </header>
 
     <button id="btn-valider" class="cache" disabled>Valider</button>
+    <button id="btn-inclinaison" class="cache">Inclinaison</button>
     <div id="info-pays" class="cache"></div>
+    <div id="message" class="cache" role="status"></div>
 
     <!-- Résultat d'une manche -->
     <section id="resultat" class="panneau cache">
@@ -44,10 +46,16 @@
             <h1>Drapocube</h1>
             <ol class="regles">
                 <li>Un drapeau est tiré au hasard.</li>
-                <li>Tu as 30 secondes pour cliquer sur le cube blanc posé sur la capitale de ce pays.</li>
+                <li>Avant la fin du chrono, choisis le cube blanc posé sur la capitale de ce pays.</li>
                 <li>Valide : tous les cubes révèlent leur drapeau.</li>
             </ol>
-            <p class="aide">Souris : clic gauche + glisser pour tourner, molette pour zoomer, clic droit + glisser pour déplacer.</p>
+            <div id="choix-difficulte" role="radiogroup" aria-label="Difficulté">
+                <button data-difficulte="facile" role="radio">Facile</button>
+                <button data-difficulte="normal" role="radio">Normal</button>
+                <button data-difficulte="difficile" role="radio">Difficile</button>
+            </div>
+            <p id="description-difficulte" class="aide"></p>
+            <p id="aide" class="aide">Souris : clic gauche + glisser pour tourner, molette pour zoomer, clic droit + glisser pour déplacer.</p>
             <p id="record"></p>
             <button id="btn-jouer" disabled>Chargement…</button>
         </div>
@@ -58,12 +66,16 @@
         <div class="carte-ecran">
             <h1>Partie terminée</h1>
             <p id="fin-total"></p>
+            <p id="fin-difficulte" class="aide"></p>
             <p id="fin-record"></p>
             <table id="fin-tableau">
                 <thead><tr><th>#</th><th>Drapeau</th><th>Pays</th><th>Ton choix</th><th>Points</th></tr></thead>
                 <tbody></tbody>
             </table>
-            <button id="btn-rejouer">Rejouer</button>
+            <div class="boutons">
+                <button id="btn-rejouer">Rejouer</button>
+                <button id="btn-accueil" class="secondaire">Changer de difficulté</button>
+            </div>
         </div>
     </section>
 

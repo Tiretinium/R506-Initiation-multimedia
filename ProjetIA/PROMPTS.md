@@ -32,5 +32,13 @@ Trace du travail avec l'IA (Claude Code) : prompts clés, erreurs de l'IA, corre
    - Courbe de distance conservée : `exp(−d / 1500 km)`.
    - Le panneau de résultat affiche le détail position / rapidité.
 
+## 23/10/2026 — Difficultés et version smartphone
+
+7. « On va faire les difficultés et un mode smartphone. »
+   - Difficultés proposées par l'IA et retenues : Facile (76 pays connus, 40 s), Normal (196 cubes, tirage des pays de plus de 10 000 km², 30 s), Difficile (tout, 20 s). Champs `connu` et `superficie` ajoutés par le script de génération.
+   - Smartphone : jeu au toucher, sélection du cube le plus proche (les cubes sont petits sous le doigt), gestes à deux doigts ignorés, nom du pays au toucher après la révélation, interface portrait/paysage.
+   - Mode inclinaison (`DeviceOrientationEvent`) : pencher le téléphone fait glisser la carte. Testé avec un capteur simulé (Chrome DevTools Protocol) : beaucoup trop rapide au premier essai (de l'Europe au Pacifique en 1,5 s), vitesse divisée par environ 2,5 et réponse au carré pour viser finement.
+   - À tester sur un vrai téléphone : le capteur n'est accessible qu'en HTTPS (GitHub Pages).
+
 ## À compléter
 <!-- Ajouter ici chaque nouveau prompt important, l'erreur éventuelle de l'IA et la correction demandée. -->

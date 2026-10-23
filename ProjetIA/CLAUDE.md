@@ -18,9 +18,12 @@ Jeu web : retrouver un pays sur une carte du monde en 3D à partir de son drapea
 ## Repères techniques
 - Plateau de 360 × 180 unités : 1 unité = 1 degré. Position d'un cube : `x = lng`, `z = -lat`.
 - Les cubes sont posés sur les capitales (`data/pays.json`, généré par `outils/generer-pays.mjs` : ne pas l'éditer à la main, modifier le script). Les cubes trop proches sont écartés au chargement (`calculerPositions` dans `cubes.js`) ; distances et score utilisent toujours les vraies coordonnées.
+- Difficultés : réglages uniquement dans `js/difficulte.js`. Les cubes masqués (`cube.visible === false`) ne doivent jamais être tirés, testés par le raycaster ni retournés.
+- Smartphone : penser au tactile pour chaque nouvelle interaction (pas de survol). Le capteur d'orientation exige HTTPS et, sur iOS, une permission demandée dans un clic.
 - Toute remise à zéro des cubes passe par `masquer()` : elle annule aussi les retournements encore en attente.
 - Les drapeaux SVG ont un `width`/`height` explicites pour pouvoir être dessinés dans un canvas.
 
 ## Vérification
 - Tester via un serveur local (Live Server ou `python -m http.server`), console ouverte : aucune erreur.
 - Jouer au moins une partie complète de 10 manches après chaque modification de `jeu.js`.
+- Tester aussi en mode appareil mobile des outils de développement (écran tactile, portrait et paysage).

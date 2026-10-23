@@ -24,6 +24,11 @@ const NOMS = {
     MU: 'Maurice', CV: 'Cap-Vert', SA: 'Arabie saoudite',
 };
 
+// Pays « connus » de la difficulté Facile (la sélection de la première version, bien espacée sur la carte)
+const CONNUS = new Set(('fr es pt gb ie it de pl se no fi gr tr ua ru ro is ch at hu rs nl dk cz ma dz tn ly eg sn ml '
+    + 'ci gh ng cm cd ao sd et ke tz za mg sa il iq ir af pk kz in np bd mn cn kr jp th vn ph id us ca mx cu jm '
+    + 'co ve ec pe br cl ar au nz pg').split(' '));
+
 // Noms français de capitales absents ou mal choisis dans Wikidata
 const CAPITALES_FR = { CY: 'Nicosie', PY: 'Asuncion' };
 
@@ -80,6 +85,8 @@ for (const c of retenus) {
         lat: arrondir(capitale ? capitale.lat : latCentre),
         lng: arrondir(capitale ? capitale.lng : lngCentre),
         surCapitale: Boolean(capitale),
+        superficie: Math.round(c.area), // en km², sert à écarter les petits pays du tirage en Normal
+        connu: CONNUS.has(c.cca2.toLowerCase()),
     });
 }
 

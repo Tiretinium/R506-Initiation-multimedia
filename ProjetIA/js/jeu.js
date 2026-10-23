@@ -1,12 +1,16 @@
 // Déroulement d'une partie : tirage, chrono, validation, révélation, manches, écran de fin
 import * as THREE from 'three';
-import { pointsManche, distanceKm, DUREE_MANCHE_S } from './score.js';
-import { majApparence, retourner, masquer } from './cubes.js';
+import { pointsManche, distanceKm } from './score.js';
+import { majApparence, retourner, masquer, placerCubes } from './cubes.js';
+import { DIFFICULTES, DIFFICULTE_PAR_DEFAUT } from './difficulte.js';
 
 const NB_MANCHES = 10;
 const POINTS_MAX = NB_MANCHES * 1000;
 const SEUIL_URGENT_S = 10;
-const CLE_RECORD = 'drapocube-record';
+const CLE_DIFFICULTE = 'drapocube-difficulte';
+const cleRecord = (difficulte) => `drapocube-record-${difficulte}`;
+// Sur écran tactile, le nom d'un pays touché après la révélation reste affiché ce temps-là
+const DUREE_INFO_TACTILE_MS = 2500;
 
 const $ = (id) => document.getElementById(id);
 const formater = (n) => n.toLocaleString('fr-FR');
@@ -21,17 +25,23 @@ function melanger(tableau) {
     return copie;
 }
 
-function lireRecord() {
-    try { return Number(localStorage.getItem(CLE_RECORD)) || 0; } catch { return 0; }
+// Le stockage du navigateur peut être indisponible (navigation privée) : on ne bloque jamais le jeu
+function lire(cle) {
+    try { return localStorage.getItem(cle); } catch { return null; }
 }
 
-function ecrireRecord(score) {
-    try { localStorage.setItem(CLE_RECORD, String(score)); } catch { /* stockage indisponible */ }
+function ecrire(cle, valeur) {
+    try { localStorage.setItem(cle, String(valeur)); } catch { /* stockage indisponible */ }
 }
+
+const lireRecord = (difficulte) => Number(lire(cleRecord(difficulte))) || 0;
 
 export function creerJeu({ scene, camera, controls, cubes }) {
     const etat = {
         phase: 'chargement', // chargement | accueil | tirage | jeu | revelation | fin
+        difficulte: DIFFICULTE_PAR_DEFAUT,
+        visibles: [], // cubes présents sur la carte pour la difficulté choisie
+        tirables: [], // cubes qui peuvent être tirés
         manches: [],
         indice: 0,
         score: 0,
@@ -39,12 +49,34 @@ export function creerJeu({ scene, camera, controls, cubes }) {
         finChrono: 0,
         arc: null,
         cibleCamera: null,
+        minuteurInfo: null,
     };
+    const reglages = () => DIFFICULTES[etat.difficulte];
+
+    // ---------- Difficulté (écran d'accueil) ----------
+
+    function choisirDifficulte(id) {
+        if (!DIFFICULTES[id]) id = DIFFICULTE_PAR_DEFAUT;
+        etat.difficulte = id;
+        ecrire(CLE_DIFFICULTE, id);
+        for (const bouton of document.querySelectorAll('#choix-difficulte button')) {
+            bouton.classList.toggle('actif', bouton.dataset.difficulte === id);
+            bouton.setAttribute('aria-checked', String(bouton.dataset.difficulte === id));
+        }
+        $('description-difficulte').textContent = reglages().description;
+        const record = lireRecord(id);
+        $('record').textContent = record ? `Ton record (${reglages().nom}) : ${formater(record)} pts` : '';
+
+        // La carte de l'accueil montre déjà les cubes de cette difficulté
+        etat.visibles = placerCubes(cubes, reglages().surLaCarte);
+        etat.tirables = etat.visibles.filter((c) => reglages().tirable(c.pays));
+    }
 
     // ---------- Début de partie et de manche ----------
 
     function demarrerPartie() {
-        etat.manches = melanger(cubes).slice(0, NB_MANCHES).map((cube) => ({ cible: cube, choix: null, points: 0, detail: null }));
+        etat.manches = melanger(etat.tirables).slice(0, NB_MANCHES)
+            .map((cube) => ({ cible: cube, choix: null, points: 0, detail: null }));
         etat.indice = 0;
         etat.score = 0;
         controls.autoRotate = false;
@@ -55,7 +87,7 @@ export function creerJeu({ scene, camera, controls, cubes }) {
         lancerManche();
     }
 
-    function lancerManche() {
+    function remettreCubesABlanc() {
         const maintenant = performance.now();
         etat.selection = null;
         retirerArc();
@@ -65,17 +97,20 @@ export function creerJeu({ scene, camera, controls, cubes }) {
             masquer(cube, Math.random() * 250, maintenant);
             majApparence(cube);
         }
+    }
 
+    function lancerManche() {
+        remettreCubesABlanc();
         $('resultat').classList.add('cache');
         $('btn-valider').classList.remove('cache');
         $('btn-valider').disabled = true;
         $('manche').textContent = `Manche ${etat.indice + 1}/${NB_MANCHES}`;
-        majChrono(DUREE_MANCHE_S);
+        majChrono(reglages().duree);
 
         etat.phase = 'tirage';
         animerTirage(etat.manches[etat.indice].cible.pays).then(() => {
             etat.phase = 'jeu';
-            etat.finChrono = performance.now() + DUREE_MANCHE_S * 1000;
+            etat.finChrono = performance.now() + reglages().duree * 1000;
         });
     }
 
@@ -97,7 +132,7 @@ export function creerJeu({ scene, camera, controls, cubes }) {
                     return;
                 }
                 let pays;
-                do { pays = cubes[Math.floor(Math.random() * cubes.length)].pays; }
+                do { pays = etat.tirables[Math.floor(Math.random() * etat.tirables.length)].pays; }
                 while (pays === precedent || pays === cible);
                 precedent = pays;
                 img.src = urlDrapeau(pays.code);
@@ -112,7 +147,7 @@ export function creerJeu({ scene, camera, controls, cubes }) {
     // ---------- Chrono ----------
 
     function majChrono(secondesRestantes) {
-        $('chrono-barre').style.width = `${(secondesRestantes / DUREE_MANCHE_S) * 100}%`;
+        $('chrono-barre').style.width = `${(secondesRestantes / reglages().duree) * 100}%`;
         $('chrono-texte').textContent = `${Math.ceil(secondesRestantes)} s`;
         $('chrono').classList.toggle('urgent', secondesRestantes < SEUIL_URGENT_S);
     }
@@ -129,6 +164,18 @@ export function creerJeu({ scene, camera, controls, cubes }) {
 
     // ---------- Interaction avec les cubes ----------
 
+    const drapeauxReveles = () => etat.phase === 'revelation' || etat.phase === 'fin';
+
+    function afficherInfo(cube, x, y) {
+        const info = $('info-pays');
+        const montrer = cube && cube.revele && drapeauxReveles();
+        info.classList.toggle('cache', !montrer);
+        if (!montrer) return;
+        info.textContent = `${cube.pays.nom} · ${cube.pays.capitale}`;
+        info.style.left = `${x}px`;
+        info.style.top = `${y}px`;
+    }
+
     function surSurvol(cube, x, y) {
         for (const c of cubes) {
             const survole = c === cube && etat.phase === 'jeu';
@@ -138,17 +185,21 @@ export function creerJeu({ scene, camera, controls, cubes }) {
             }
         }
         // Une fois les drapeaux révélés, le survol affiche le nom du pays
-        const info = $('info-pays');
-        const montrerNom = cube && cube.revele && (etat.phase === 'revelation' || etat.phase === 'fin');
-        info.classList.toggle('cache', !montrerNom);
-        if (montrerNom) {
-            info.textContent = `${cube.pays.nom} · ${cube.pays.capitale}`;
-            info.style.left = `${x}px`;
-            info.style.top = `${y}px`;
-        }
+        if (etat.minuteurInfo === null) afficherInfo(cube, x, y);
     }
 
-    function surClic(cube) {
+    function surClic(cube, x, y, tactile) {
+        if (drapeauxReveles()) {
+            // Sur écran tactile il n'y a pas de survol : toucher un cube révélé affiche son nom
+            if (!tactile) return;
+            clearTimeout(etat.minuteurInfo);
+            afficherInfo(cube, x, y);
+            etat.minuteurInfo = setTimeout(() => {
+                etat.minuteurInfo = null;
+                afficherInfo(null);
+            }, DUREE_INFO_TACTILE_MS);
+            return;
+        }
         if (etat.phase !== 'jeu') return;
         if (etat.selection) {
             etat.selection.selectionne = false;
@@ -173,14 +224,14 @@ export function creerJeu({ scene, camera, controls, cubes }) {
         const choix = tempsEcoule ? null : etat.selection;
 
         manche.choix = choix;
-        manche.detail = pointsManche(choix?.pays ?? null, cible.pays, restant);
+        manche.detail = pointsManche(choix?.pays ?? null, cible.pays, restant, reglages().duree);
         manche.points = manche.detail.total;
         etat.score += manche.points;
         $('score').textContent = `${formater(etat.score)} pts`;
         $('btn-valider').classList.add('cache');
 
-        // Tous les cubes se retournent en vague, en partant du bon pays
-        for (const cube of cubes) {
+        // Tous les cubes de la carte se retournent en vague, en partant du bon pays
+        for (const cube of etat.visibles) {
             cube.survole = cube.selectionne = false;
             const ecart = cube.mesh.position.distanceTo(cible.mesh.position);
             retourner(cube, true, ecart * 5, maintenant);
@@ -271,10 +322,11 @@ export function creerJeu({ scene, camera, controls, cubes }) {
         $('hud').classList.add('cache');
         $('resultat').classList.add('cache');
 
-        const ancienRecord = lireRecord();
+        const ancienRecord = lireRecord(etat.difficulte);
         $('fin-total').textContent = `${formater(etat.score)} pts sur ${formater(POINTS_MAX)}`;
+        $('fin-difficulte').textContent = `Difficulté : ${reglages().nom}`;
         if (etat.score > ancienRecord) {
-            ecrireRecord(etat.score);
+            ecrire(cleRecord(etat.difficulte), etat.score);
             $('fin-record').textContent = 'Nouveau record !';
         } else {
             $('fin-record').textContent = `Record : ${formater(ancienRecord)} pts`;
@@ -291,12 +343,33 @@ export function creerJeu({ scene, camera, controls, cubes }) {
         $('fin').classList.remove('cache');
     }
 
+    function retourAccueil() {
+        remettreCubesABlanc();
+        $('fin').classList.add('cache');
+        afficherAccueil();
+    }
+
+    function afficherAccueil() {
+        etat.phase = 'accueil';
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.4;
+        choisirDifficulte(etat.difficulte);
+        $('accueil').classList.remove('cache');
+    }
+
     // ---------- Boutons et clavier ----------
 
     $('btn-jouer').addEventListener('click', demarrerPartie);
-    $('btn-rejouer').addEventListener('click', demarrerPartie);
+    $('btn-rejouer').addEventListener('click', () => {
+        remettreCubesABlanc();
+        demarrerPartie();
+    });
+    $('btn-accueil').addEventListener('click', retourAccueil);
     $('btn-valider').addEventListener('click', () => valider());
     $('btn-suivant').addEventListener('click', suivant);
+    for (const bouton of document.querySelectorAll('#choix-difficulte button')) {
+        bouton.addEventListener('click', () => choisirDifficulte(bouton.dataset.difficulte));
+    }
     window.addEventListener('keydown', (e) => {
         if (e.key !== 'Enter') return;
         // Sinon Entrée activerait aussi le bouton qui a le focus (double action)
@@ -306,11 +379,8 @@ export function creerJeu({ scene, camera, controls, cubes }) {
     });
 
     function pret() {
-        etat.phase = 'accueil';
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.4;
-        const record = lireRecord();
-        $('record').textContent = record ? `Ton record : ${formater(record)} pts` : '';
+        etat.difficulte = lire(CLE_DIFFICULTE) ?? DIFFICULTE_PAR_DEFAUT;
+        afficherAccueil();
         $('btn-jouer').disabled = false;
         $('btn-jouer').textContent = 'Jouer';
     }

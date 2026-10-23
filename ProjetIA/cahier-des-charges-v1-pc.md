@@ -56,7 +56,7 @@ Livrer un jeu **jouable de bout en bout sur PC**, en ligne sur GitHub Pages :
 
 ### Exclu de la V1 (prévu plus tard)
 
-- Version smartphone et contrôle par l'orientation du téléphone (V2)
+- Version smartphone et contrôle par l'orientation du téléphone (fait en V1.1, voir section 12)
 - Les autres modes de jeu (par continent, mode inverse, etc. : voir section 12)
 - Globe 3D à la place de la carte plate
 - Multijoueur, comptes, serveur, classement en ligne
@@ -285,10 +285,34 @@ Format : le fichier complet, puis les 3 lignes à ajouter dans main.js pour l'ap
 
 ---
 
-## 12. Évolutions prévues (V2 : mobile et plus)
+## 12. V1.1 : difficultés et version smartphone (réalisé)
 
-- Version smartphone : interface tactile, sélection au toucher.
-- Inclinaison du téléphone (`DeviceOrientationEvent`) pour faire pivoter la carte, avec un bouton de permission pour iOS.
+### Difficultés
+
+Choisies à l'accueil (boutons Facile / Normal / Difficile), mémorisées dans le navigateur. Réglages dans `js/difficulte.js`.
+
+| Difficulté | Cubes sur la carte | Pays tirés | Chrono |
+| --- | --- | --- | --- |
+| Facile | 76 pays connus (champ `connu`) | Ces 76 pays | 40 s |
+| Normal | Les 196 | Superficie ≥ 10 000 km² (162 pays : pas de micro-États ni de petites îles) | 30 s |
+| Difficile | Les 196 | Les 196 | 20 s |
+
+- Les cubes sont replacés à chaque changement de difficulté : avec moins de cubes, moins de cubes sont écartés de leur capitale.
+- Les points de rapidité sont calculés sur la durée du chrono de la difficulté.
+- Un **record par difficulté** ; l'écran de fin rappelle la difficulté et propose « Changer de difficulté ».
+
+### Version smartphone
+
+- **Détection** : écran tactile (`pointer: coarse`) ; l'aide de l'accueil s'adapte.
+- **Toucher** : un doigt pour tourner, deux pour zoomer et déplacer (OrbitControls). Toucher un cube le sélectionne ; si le doigt tombe à côté, on prend le cube le plus proche dans un rayon de 28 px. Un geste à deux doigts n'est jamais compté comme un toucher.
+- **Après la révélation** : toucher un cube affiche son nom pendant 2,5 s (remplace le survol de la souris).
+- **Inclinaison** (`DeviceOrientationEvent`) : bouton « Inclinaison ». La position du téléphone à l'activation est le point neutre ; pencher le téléphone fait glisser la carte dans ce sens, plus vite quand on penche plus (zone morte de 4°, maximum à 30°, réponse au carré pour viser finement). Les axes suivent la rotation de l'écran (portrait ou paysage).
+  - iOS : la permission est demandée au clic sur le bouton (`DeviceOrientationEvent.requestPermission`).
+  - Le capteur ne fonctionne qu'en **HTTPS** (GitHub Pages) ou sur `localhost` : sans mesure au bout de 1,5 s, un message l'explique.
+- **Interface** : bandeau, boutons et panneaux adaptés au portrait (≤ 700 px de large) et au paysage (≤ 500 px de haut), marges des encoches (`safe-area-inset`).
+
+## 13. Évolutions prévues (V2 et plus)
+
 - Globe 3D : les cubes posés sur une sphère au lieu d'une carte plate.
 - **Plusieurs modes de jeu**, choisis depuis l'accueil (la V1 n'a que le mode « Monde ») :
   - modes par continent avec tous les pays (carte zoomée pour éviter que les cubes se chevauchent) ;
@@ -298,8 +322,8 @@ Format : le fichier complet, puis les 3 lignes à ajouter dans main.js pour l'ap
 
 ---
 
-## 13. Questions ouvertes
+## 14. Questions ouvertes
 
 - Date de rendu et grille d'évaluation exacte : à demander à l'enseignant.
 - Projet en solo ou en binôme ?
-- Quels modes de jeu ajouter en premier après la V1 ?
+- Quels modes de jeu ajouter ensuite ?

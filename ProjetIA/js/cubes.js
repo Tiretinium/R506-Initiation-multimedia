@@ -90,45 +90,65 @@ function calculerPositions(pays) {
     return positions.map((position, i) => ({ position, ancre: ancres[i] }));
 }
 
-// Fil discret + point entre un cube déplacé et la vraie position de sa capitale
-function creerFil(scene, position, ancre) {
-    const materiau = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
+// Fils discrets + points entre les cubes déplacés et la vraie position de leur capitale
+const fils = new THREE.Group();
+const materiauFil = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
+const materiauPoint = new THREE.MeshBasicMaterial({ color: 0xffffff });
+const geometriePoint = new THREE.CircleGeometry(0.12, 16);
+
+function creerFil(position, ancre) {
     const geometrie = new THREE.BufferGeometry().setFromPoints([
         new THREE.Vector3(position.x, 0.03, position.z),
         new THREE.Vector3(ancre.x, 0.03, ancre.z),
     ]);
-    scene.add(new THREE.Line(geometrie, materiau));
-    const point = new THREE.Mesh(
-        new THREE.CircleGeometry(0.12, 16),
-        new THREE.MeshBasicMaterial({ color: 0xffffff })
-    );
+    fils.add(new THREE.Line(geometrie, materiauFil));
+    const point = new THREE.Mesh(geometriePoint, materiauPoint);
     point.rotation.x = -Math.PI / 2;
     point.position.set(ancre.x, 0.04, ancre.z);
-    scene.add(point);
+    fils.add(point);
+}
+
+// Affiche les cubes des pays retenus par la difficulté et recalcule leur placement :
+// avec moins de cubes, il y a moins de chevauchements, donc moins de cubes déplacés.
+export function placerCubes(cubes, surLaCarte) {
+    for (const objet of [...fils.children]) {
+        if (objet.isLine) objet.geometry.dispose();
+        fils.remove(objet);
+    }
+    const visibles = cubes.filter((c) => surLaCarte(c.pays));
+    for (const cube of cubes) {
+        cube.visible = visibles.includes(cube);
+        cube.mesh.visible = cube.visible;
+    }
+    const emplacements = calculerPositions(visibles.map((c) => c.pays));
+    visibles.forEach((cube, i) => {
+        const { position, ancre } = emplacements[i];
+        cube.mesh.position.set(position.x, TAILLE / 2, position.z);
+        cube.halo.position.set(position.x, 0.05, position.z);
+        if (position.distanceTo(ancre) > SEUIL_FIL) creerFil(position, ancre);
+    });
+    return visibles;
 }
 
 export function creerCubes(scene, pays, drapeaux) {
-    const emplacements = calculerPositions(pays);
-    return pays.map((p, i) => {
+    scene.add(fils);
+    return pays.map((p) => {
         const blanc = new THREE.MeshStandardMaterial({ color: COULEUR_BLANC.clone(), roughness: 0.55 });
         const drapeau = new THREE.MeshStandardMaterial({ map: drapeaux.get(p.code), roughness: 0.55 });
 
         const mesh = new THREE.Mesh(geometrieCube, blanc);
-        const { position: base, ancre } = emplacements[i];
-        mesh.position.set(base.x, TAILLE / 2, base.z);
-        if (base.distanceTo(ancre) > SEUIL_FIL) creerFil(scene, base, ancre);
+        mesh.position.y = TAILLE / 2;
         scene.add(mesh);
 
         const halo = new THREE.Mesh(geometrieHalo, new THREE.MeshBasicMaterial({
             color: COULEUR_BON, transparent: true, opacity: 0.85, side: THREE.DoubleSide,
         }));
         halo.rotation.x = -Math.PI / 2;
-        halo.position.set(base.x, 0.05, base.z);
         halo.visible = false;
         scene.add(halo);
 
         const cube = {
-            pays: p, mesh, halo, blanc, drapeau,
+            pays: p, mesh, halo, blanc, drapeau, visible: true,
             survole: false, selectionne: false, revele: false, marque: null,
             retournement: null, // { debut, versDrapeau } pendant l'animation
         };
